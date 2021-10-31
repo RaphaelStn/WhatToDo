@@ -7,14 +7,14 @@ class Api {
         $this->curl = curl_init($url);
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true );
-        $data = curl_exec($this->curl);
-        if ($data === false) {
+        $this->data = curl_exec($this->curl);
+        if ($this->data === false) {
             var_dump(curl_error($this->curl));
         } else {
-            $data=json_decode($data, true);
-            $data = $data['results'];
-            return $data;
+            $this->data=json_decode($this->data, true);
+            $this->data = $this->data['results'];
+            return $this->data;
         }
-        curl_close($curl);
+        curl_close($this->curl);
     }
 }

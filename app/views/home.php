@@ -3,7 +3,7 @@
   <div class="home-container">
     <div class="home-row">
       <div class="home-movies">
-        <p>Movie Mood? <i class="fas fa-arrow-right"></i></p>
+        <p>Movie Mood ? <i class="fas fa-arrow-right"></i></p>
         <div class="home-trending">
           <?php
             foreach($variable1 as $movie):
@@ -16,7 +16,7 @@
           </div>
         </div>
       <div class="home-shows">
-      <p>TV Show Mood? <i class="fas fa-arrow-right"></i></p>
+      <p>TV Show Mood ? <i class="fas fa-arrow-right"></i></p>
       <div class="home-trending">
           <?php
             foreach($variable2 as $show):
@@ -31,20 +31,20 @@
     </div>
     <div class="home-row">
       <div class="home-games">
-        <p>Gaming Mood? <i class="fas fa-arrow-right"></i></p>
+        <p>Gaming Mood ? <i class="fas fa-arrow-right"></i></p>
         <div class="home-trending">
           <?php
-            foreach($variable1 as $movie):
+            foreach($variable3 as $game):
           ?>
-          <div>
-            <img class="trending-img" src="https://image.tmdb.org/t/p/w500/<?php echo $movie['poster_path']?>"></img> 
-            <p><?php echo $movie['title']?></p>
+          <div class="trending-container">
+            <img class="trending-img" src="<?php echo $game['background_image']?>"></img> 
+            <p><?php echo $game['name']?></p>
           </div>
           <?php endforeach; ?>
           </div>
         </div>
       <div class="home-music">
-      <p>Music Mood? <i class="fas fa-arrow-right"></i></p>
+      <p>Music Mood ? <i class="fas fa-arrow-right"></i></p>
       <div class="home-trending">
           <?php
             foreach($variable2 as $show):

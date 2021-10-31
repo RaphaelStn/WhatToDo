@@ -33,7 +33,10 @@ header {
 .trending-img {
     width: 150px;
     margin-right: 5px;
+    height: 225px;
+    object-fit: cover;
 }
+
 .home-trending p {
     width: 150px;
 }

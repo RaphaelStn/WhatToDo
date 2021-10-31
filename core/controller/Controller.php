@@ -6,7 +6,7 @@ class Controller {
     protected $viewpath;
     protected $template;
 
-    protected function render($view, $variable1, $variable2) {
+    protected function render($view, $variable1, $variable2,$variable3) {
         ob_start();
         require ($this -> viewpath . $view . '.php');
         $content = ob_get_clean();
