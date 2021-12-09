@@ -2,6 +2,10 @@
 namespace Core\Api;
 
 class Api {
+    public function __construct($key_movie, $key_game) {
+        $this -> key_movie = $key_movie;
+        $this -> key_game = $key_game;
+    }
 
     public function getCurl($url) {
         $this->curl = curl_init($url);
