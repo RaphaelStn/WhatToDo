@@ -3,29 +3,20 @@ namespace Core\Controller;
 
 class Controller {
 
-    protected $viewpath;
-    protected $template;
+    public function __construct() {
+        
+    }
 
-    protected function render($view, $variable1, $variable2,$variable3) {
-        ob_start();
-        require ($this -> viewpath . $view . '.php');
-        $content = ob_get_clean();
-        require($this->viewpath . 'templates/' . $this->template . '.php');
+    protected function loadModel($model_name) {
+        $this -> $model_name = \App::getInstance()->getApi($model_name);
+    }
 
-    }
-    public function getTitle() { // getter pour le titre.
-        return $this -> title;
-    }
-    protected function setTitle($title) { // setter pour le titre.
-        return  $this -> title = $title . ' | ' . $this -> title;
-    }
-    protected  function NotFound() { // 404 not found.
-        header ("HTTP/1.0 404 Not Found");
-        header('Location: index.php?action=404');
-    }
-    protected function forbidden() {
-        header ("HTTP/1.0 403 Forbidden");
-        header('Location: index.php?action=404');
+    protected function loadTwig() {
+        $loader = new \Twig\Loader\FilesystemLoader(ROOT . '/app/templates');
+        $twig = new \Twig\Environment($loader, [
+            'cache' => false, ROOT. '/api/templates/tmp'
+        ]);
+        return $twig;
     }
 }
 ?>

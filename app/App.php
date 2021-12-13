@@ -9,6 +9,7 @@ class App {
         App\Autoloader::register();
         require ROOT . '/core/AutoLoader.php';
         Core\Autoloader::register();
+        require ROOT . '/vendor/autoload.php';
     }    
     public static function getInstance() {
         if(self::$_instance === null){ 
