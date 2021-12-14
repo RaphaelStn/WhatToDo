@@ -1,11 +1,43 @@
 {% extends 'layout.twig' %}
 
-{% block head%}
-<title>WhatToDo || Accueil</title>
+{% block title %}
+Home
 {% endblock %}
 
+
 {% block content %} 
-{% for movie in movies %}
-{{ movie.title}}
-{% endfor %}
+
+<section id="home">
+    <h1> You don't know what to do? Let us help find an idea ! </h1>
+    <h2>Movie mood</h2>
+    <div class="container-home container-movie">
+        {% for movie in movies %}
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
+                <p>{{movie.title}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>TV Show mood</h2>
+    <div class="container-home container-show">
+        {% for show in shows %}
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
+                <p>{{show.name}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>Gaming mood</h2>
+    <div class="container-home container-game">
+        {% for game in games %}
+            <div class="poster">
+                <img src="{{game.background_image}}"></img>
+                <p>{{game.name}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <h2>Music mood</h2>
+    <div class="container-home container-music">
+    </div>
+
 {% endblock %}

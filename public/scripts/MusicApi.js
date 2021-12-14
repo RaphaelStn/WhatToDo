@@ -4,7 +4,7 @@ class MusicApi {
     }
     async initApi() {
         let thisData = new Promise(function(done, fail) {
-            const settings = {
+            let settings = {
                 "async": true,
                 "crossDomain": true,
                 "url": "https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=20&startFrom=0",

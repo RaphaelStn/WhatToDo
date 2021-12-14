@@ -15,6 +15,6 @@ Class FrontendController extends Controller {
         $shows = $this->movies->getTrendingShows();
         $games = $this->games->getTrendingGames();
         $twig = $this->loadTwig();
-        echo $twig -> render('home.twig',['movies' => $movies]);
+        echo $twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games]);
     }
 }

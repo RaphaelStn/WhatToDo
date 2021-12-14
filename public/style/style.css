@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    background-color: black ;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+header {
+    background-color: rgb(18,18,18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 95px;
+}
+.navbar-item {
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+}
+.navbar-item:hover {
+    color : #f5c518;
+}
+.navbar-login {
+    position: absolute;
+    right : 5px;
+}
+.main-logo {
+    color: black;
+    font-weight: 600;
+    font-size: 25px;
+    background-color: #f5c518;
+    border-radius: 18px;
+    padding : 12px;
+    position: absolute;
+    left: 5px;
+}
+.main-logo:hover {
+    color: black;
+}
+/* HOME PAGE */
+#home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+#home h1 {
+    color: #f5c518;
+    margin-bottom: 50px;
+}
+.container-home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 9px;
+    width: 640px;
+    overflow: hidden;
+}
+.poster {
+    background-color: rgb(18,18,18);
+    border-radius: 5px;
+    border: 1px solid black;
+    transition: background-color .3s;
+    transition: transform .5s;
+}
+.slide-active {
+    transform: translateX(-160px);
+    opacity: 1;
+}
+.poster img {
+    width: 150px;
+    height: 225px;
+    object-fit: cover;
+}
+.poster p {
+    text-align: center;
+    overflow: hidden;
+    width: 150px;
+    height: 40px;
+}
+.poster:hover {
+    background-color: rgb(51, 50, 50); 
+}
+.poster:hover img {
+    opacity: 0.7;
+}
+.btn-left {
+	width: 40px;
+	height: 40px;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 2px;
+	cursor: pointer;
+	text-align: center;
+	color: #f5c518;
+	z-index:3;
+	padding-top: 20px;
+    position: absolute;
+}
+.btn-right {
+	min-width: 40px;
+	height: 40px;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 2px;
+	cursor: pointer;
+	text-align: center;
+	color: #f5c518;
+	z-index:3;
+	padding-top: 20px;
+    position: sticky;
+    right: -1px;
+}
+

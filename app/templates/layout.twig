@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html LANG="fr">
 <head>
-{% block head %} {% endblock %}
-
+    <meta charset="utf-8">
+    <meta name="description" content="WhatToDo">
+    <link rel="icon" type="image/png" href="img/ico.png"/>
+    <link href="style/style.css" rel="stylesheet">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="https://use.typekit.net/nac1xck.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>WhatToDo || {% block title %} {% endblock %}</title>
 </head>
 <body>
+<header>
+    <nav>
+        <a class="navbar-item main-logo" href="index.php?p=home">WhatToDo</a>
+        <a class="navbar-item" href="index.php?p=movie">Movie</a>
+        <a class="navbar-item" href="index.php?p=show">TV Shows</a>
+        <a class="navbar-item" href="index.php?p=game">Games</a>
+        <a class="navbar-item" href="index.php?p=music">Musics</a>
+        <a class="navbar-item navbar-login" href="index.php?p=login">Login</a>
+    </nav>
+</header>
 
 {% block content %} {% endblock %}
 
 </body>
-<script></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://kit.fontawesome.com/db9607f191.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="scripts/music.js"></script>
+<script src="scripts/musicApi.js"></script>
+<script src="scripts/slider.js"></script>
+<script src="scripts/index.js"></script>
 
 </html>
