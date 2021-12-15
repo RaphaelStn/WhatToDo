@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Shows
+{% endblock %}
+
+
+{% block content %}
+
+<section id="show">
+    <h2> Let us chose what random TV Show you might want to watch !</h2>
+    <div class="container-poster container-show">
+        {% for show in shows %}
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
+                <p>{{show.name}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <a id="show-random" href="" class="btn-random">Let the fate decide</a>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="scripts/show.js"></script>
+{% endblock %}

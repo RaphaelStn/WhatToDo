@@ -16,4 +16,20 @@ switch ($p) {
         $controller = new FrontendController();
         $controller->home();
         break;
+    case 'movie' : 
+        $controller = new FrontendController();
+        $controller->movie();
+        break;
+    case 'show' : 
+        $controller = new FrontendController();
+        $controller->show();
+        break;
+    case 'game' : 
+        $controller = new FrontendController();
+        $controller->game();
+        break;
+    case 'music' : 
+        $controller = new FrontendController();
+        $controller->music();
+        break;
 }

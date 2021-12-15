@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Movies
+{% endblock %}
+
+
+{% block content %}
+
+<section id="movie">
+    <h2> Let us chose what random movie you might want to watch !</h2>
+    <div class="container-poster container-movie">
+        {% for movie in movies %}
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
+                <p>{{movie.title}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <a id="movie-random" href="" class="btn-random">Let the fate decide</a>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="scripts/movie.js"></script>
+{% endblock %}

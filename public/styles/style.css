@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+header {
+  background-color: #121212;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 95px;
+}
+
+nav label {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  nav label {
+    width: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-right: 5px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+nav #toggle {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  nav #toggle:checked ~ .navbar-item {
+    display: block;
+    z-index: 4;
+    background-color: #121212;
+    width: 150px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  nav {
+    height: 60px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+  }
+}
+
+.navbar-item {
+  padding: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-item:hover {
+  color: #f5c518;
+  border-bottom: solid #f5c518;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar-item {
+    display: none;
+  }
+}
+
+.navbar-login {
+  position: absolute;
+  right: 5px;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar-login {
+    position: inherit;
+  }
+}
+
+.main-logo {
+  color: black;
+  font-weight: 600;
+  font-size: 25px;
+  background-color: #f5c518;
+  border-radius: 18px;
+  padding: 12px;
+}
+
+.main-logo:hover {
+  color: black;
+}
+
+.container-poster {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: calc(5 *(150px + 10px));
+  gap: 9px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 800px) {
+  .container-poster {
+    width: calc(3 *(90px + 10px));
+  }
+}
+
+.poster {
+  background-color: #121212;
+  border-radius: 5px;
+  border: 1px solid black;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+.poster img {
+  width: 150px;
+  height: 225px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: 800px) {
+  .poster img {
+    width: 90px;
+    height: 150px;
+  }
+}
+
+.poster p {
+  text-align: center;
+  overflow: hidden;
+  width: 150px;
+  height: 40px;
+}
+
+@media screen and (max-width: 800px) {
+  .poster p {
+    width: 90px;
+  }
+}
+
+.poster:hover {
+  background-color: #333232;
+}
+
+.poster:hover img {
+  opacity: 0.7;
+}
+
+.slide-active {
+  -webkit-transform: translateX(-160px);
+          transform: translateX(-160px);
+  opacity: 1;
+}
+
+.btn-poster {
+  min-width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+  cursor: pointer;
+  text-align: center;
+  color: #f5c518;
+  z-index: 3;
+  padding-top: 20px;
+}
+
+.btn-left {
+  position: absolute;
+}
+
+.btn-right {
+  position: -webkit-sticky;
+  position: sticky;
+  right: -1px;
+}
+
+a.btn-random {
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #f5c518;
+  margin: 75px;
+  border-radius: 0.12em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  color: #f5c518;
+  text-align: center;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+a.btn-random:hover {
+  color: #000000;
+  background-color: #f5c518;
+}
+
+body {
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 4px;
+}
+
+#home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#home h1 {
+  color: #f5c518;
+  margin-bottom: 50px;
+}
+
+#home h2 {
+  width: calc(5 *(150px + 10px));
+  margin-top: 10px;
+}
+
+#home h2 a {
+  text-decoration: none;
+  color: white;
+}
+
+@media screen and (max-width: 800px) {
+  #home h2 {
+    width: calc(3 *(90px + 10px));
+  }
+}
+
+#movie, #game, #show, #music {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#movie h2, #game h2, #show h2, #music h2 {
+  color: #f5c518;
+  margin-bottom: 50px;
+}
+/*# sourceMappingURL=style.css.map */

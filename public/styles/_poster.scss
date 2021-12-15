@@ -1,0 +1,62 @@
+.container-poster {
+    @include flexAlignCenter(row);
+    @include posterWidth(5, 150px);
+    @include media-max(800px) {
+        @include posterWidth(3, 90px);
+    }
+    gap: 9px;
+    overflow: hidden;
+}
+.poster {
+    background-color: rgb(18,18,18);
+    border-radius: 5px;
+    border: 1px solid black;
+    transition: background-color .3s;
+    transition: transform .5s;
+    img {
+        width: 150px;
+        height: 225px;
+        object-fit: cover;
+        @include media-max(800px) {
+            width: 90px;
+            height: 150px;
+        }
+    }
+    p {
+        text-align: center;
+        overflow: hidden;
+        width: 150px;
+        height: 40px;
+        @include media-max(800px) {
+            width: 90px;
+        }
+    }
+    &:hover {
+        background-color: rgb(51, 50, 50); 
+        img {
+            opacity: 0.7;
+        }
+    }
+}
+.slide-active {
+    transform: translateX(-160px);
+    opacity: 1;
+}
+.btn-poster {
+	min-width: 40px;
+	height: 40px;
+	background-color: rgba(0,0,0,0.6);
+	border-radius: 2px;
+	cursor: pointer;
+	text-align: center;
+	color: $main-color;
+	z-index:3;
+	padding-top: 20px;
+}
+.btn-left {
+    position: absolute;
+}
+.btn-right {
+    position: sticky;
+    right: -1px;
+}

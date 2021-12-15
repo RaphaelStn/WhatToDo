@@ -1,9 +1,16 @@
+var resizeTimeout;
+window.addEventListener('resize', function(event) {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(function(){
+    window.location.reload();
+  }, 1500);
+});
+
 let music = new MusicApi()
 let getMusic = music.initApi().then((dataMusic) => {
     let musicHtml = document.querySelector(".container-music");
     let getTrending = new Music(dataMusic, musicHtml);
     let sliderMusic = document.querySelector('.container-music');
-    console.log(sliderMusic);
     let createSliderMusic = new Slider(sliderMusic, 5000);
 });
 

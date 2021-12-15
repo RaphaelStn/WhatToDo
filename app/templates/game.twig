@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Games
+{% endblock %}
+
+
+{% block content %}
+
+<section id="game">
+    <h2> Let us chose what random game you might want to play !</h2>
+    <div class="container-poster container-game">
+        {% for game in games %}
+            <div class="poster">
+                <img src="{{game.background_image}}"></img>
+                <p>{{game.name}}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <a id="game-random" href="" class="btn-random">Let the fate decide</a>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="scripts/game.js"></script>
+{% endblock %}
