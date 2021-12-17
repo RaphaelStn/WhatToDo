@@ -40,6 +40,7 @@ nav label {
 
 @media screen and (max-width: 800px) {
   nav label {
+    margin-top: 20px;
     width: 30px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -72,7 +73,6 @@ nav #toggle {
 
 @media screen and (max-width: 800px) {
   nav {
-    height: 60px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -93,8 +93,8 @@ nav #toggle {
 }
 
 .navbar-item:hover {
-  color: #f5c518;
-  border-bottom: solid #f5c518;
+  color: #F2BA49;
+  border-bottom: solid #F2BA49;
 }
 
 @media screen and (max-width: 800px) {
@@ -115,16 +115,12 @@ nav #toggle {
 }
 
 .main-logo {
-  color: black;
-  font-weight: 600;
-  font-size: 25px;
-  background-color: #f5c518;
-  border-radius: 18px;
-  padding: 12px;
+  position: absolute;
+  left: 0px;
 }
 
-.main-logo:hover {
-  color: black;
+.main-logo img {
+  width: 150px;
 }
 
 .container-poster {
@@ -209,7 +205,7 @@ nav #toggle {
   border-radius: 2px;
   cursor: pointer;
   text-align: center;
-  color: #f5c518;
+  color: #F2BA49;
   z-index: 3;
   padding-top: 20px;
 }
@@ -227,13 +223,13 @@ nav #toggle {
 a.btn-random {
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid #f5c518;
+  border: 0.1em solid #F2BA49;
   margin: 75px;
   border-radius: 0.12em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
-  color: #f5c518;
+  color: #F2BA49;
   text-align: center;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
@@ -241,7 +237,7 @@ a.btn-random {
 
 a.btn-random:hover {
   color: #000000;
-  background-color: #f5c518;
+  background-color: #F2BA49;
 }
 
 body {
@@ -272,7 +268,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #home h1 {
-  color: #f5c518;
+  color: #F2BA49;
   margin-bottom: 50px;
 }
 
@@ -309,7 +305,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #movie h2, #game h2, #show h2, #music h2 {
-  color: #f5c518;
+  color: #F2BA49;
   margin-bottom: 50px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -9,6 +9,7 @@ nav {
     label {
         display: none;
         @include media-max(800px) {
+            margin-top: 20px;
             width: 30px;
             display: flex;
             justify-content: flex-end;
@@ -31,7 +32,6 @@ nav {
         }
     }
     @include media-max(800px) {
-        height: 60px;
         flex-direction: column;
         justify-content: flex-start;
         align-items:  flex-end;
@@ -58,13 +58,10 @@ nav {
     }
 }
 .main-logo {
-    color: black;
-    font-weight: 600;
-    font-size: 25px;
-    background-color: $main-color;
-    border-radius: 18px;
-    padding : 12px;
-    &:hover {
-        color: black;
+    position: absolute;
+    left: 0px;
+
+    img {
+        width: 150px;
     }
 }
