@@ -1,11 +1,12 @@
 // scripts for home page setting sliders
 
-let music = new MusicApi()
-let getMusic = music.initApi().then((dataMusic) => {
-    let musicHtml = document.querySelector(".container-music");
-    let getTrending = new Music(dataMusic, musicHtml);
-    let sliderMusic = document.querySelector('.container-music');
-    let createSliderMusic = new Slider(sliderMusic, 5000);
+let books = new BooksApi()
+let getBooks = books.initApi().then((dataBooks) => {
+    let bookHTML = document.querySelector(".container-book");
+    let getTrending = new Books(bookHTML);
+    getTrending.initTrending(dataBooks);
+    let sliderBook = document.querySelector('.container-book');
+    let createSliderBook = new Slider(sliderBook, 5000);
 });
 
 let sliderMovie = document.querySelector('.container-movie');

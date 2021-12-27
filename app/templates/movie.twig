@@ -7,8 +7,9 @@ Movies
 
 {% block content %}
 
-<section id="movie">
+<section class="single-poster">
     <h2> Let us chose what random movie you might want to watch !</h2>
+    <p> These are some of the top rated movies, feel to watch one, or add it to your favorites.</p>
     <div class="container-poster container-movie">
         {% for movie in movies %}
             <div class="poster">
@@ -17,11 +18,11 @@ Movies
             </div>
         {% endfor %}
     </div>
-    <a id="movie-random" href="" class="btn-random">Let the fate decide</a>
+    <a href="index.php?p=movieRandom" class="btn-random">Let the fate decide</a>
 </section>
 
 {% endblock %}
 
 {% block scripts %}
-<script src="scripts/movie.js"></script>
+<script src="scripts/movieHTML.js"></script>
 {% endblock %}

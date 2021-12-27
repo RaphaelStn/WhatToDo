@@ -1,0 +1,22 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+{{show.title}}
+{% endblock %}
+
+
+{% block content %}
+<section class="random">
+<div class="bigPoster">
+    <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
+    <h2>{{show.title}}</h2>
+    <p>Game rating : {{show.vote_average}}/10 <i class="fas fa-star"></i></p>
+    <p>Release date {{show.released_date|date("m/d/Y")}}</p>
+</div>
+<a id="game-random" href="index.php?p=gameRandom" class="btn-random">Dont feel like watching this? Try again !</a>
+</section>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

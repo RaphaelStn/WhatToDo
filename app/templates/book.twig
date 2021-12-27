@@ -1,0 +1,19 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Books
+{% endblock %}
+
+
+{% block content %}
+<section class="single-poster">
+    <h2> Let us chose what random book you might want to read !</h2>
+    <p> These are some of the top rated books, feel to read one, or add it to your favorites.</p>
+    <div class="container-poster container-book"></div>
+    <a href="index.php?p=bookRandom" class="btn-random">Let the fate decide</a>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="scripts/bookHTML.js"></script>
+{% endblock %}

@@ -1,0 +1,43 @@
+.random {
+    @include flexAlignCenter(column);
+}
+.bigPoster {
+    width: 50%;
+    margin: 20px;
+    background-color: rgb(18,18,18);
+    p, h2 {
+        margin: 15px;
+    }
+    p {
+        text-transform: capitalize;
+    }
+    img {
+      width: 100%;
+    }
+    &:hover {
+        background-color: rgb(51, 50, 50); 
+        img {
+            opacity: 0.85;
+        }
+    }
+  }
+.bigPosterBook {
+    margin: 20px;
+    background-color: rgb(18,18,18);
+    padding: 1px;
+    p, h2 {
+        margin: 15px;
+    }
+    p {
+        text-transform: capitalize;
+    }
+    img {
+      width: 100%;
+    }
+    &:hover {
+        background-color: rgb(51, 50, 50); 
+        img {
+            opacity: 0.85;
+        }
+    }
+}

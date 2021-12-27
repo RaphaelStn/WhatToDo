@@ -14,7 +14,7 @@ class GamesApi extends Api {
     public function getRandomGame() {
         $data =[];
         $tempData = [];
-        for ($i = 1; $i <= 8; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $tempData[$i] = $this->getCurl('https://api.rawg.io/api/games?key=' . $this-> key_game . '&metacritic=60,100&page='. $i .'');
             $data = array_merge($data, $tempData[$i]);
         }

@@ -87,7 +87,7 @@ nav #toggle {
 }
 
 .navbar-item {
-  padding: 20px;
+  padding: 35px;
   text-decoration: none;
   color: white;
 }
@@ -172,6 +172,7 @@ nav #toggle {
 }
 
 .poster p {
+  text-transform: capitalize;
   text-align: center;
   overflow: hidden;
   width: 150px;
@@ -240,6 +241,71 @@ a.btn-random:hover {
   background-color: #f2ba49;
 }
 
+.random {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bigPoster {
+  width: 50%;
+  margin: 20px;
+  background-color: #121212;
+}
+
+.bigPoster p, .bigPoster h2 {
+  margin: 15px;
+}
+
+.bigPoster p {
+  text-transform: capitalize;
+}
+
+.bigPoster img {
+  width: 100%;
+}
+
+.bigPoster:hover {
+  background-color: #333232;
+}
+
+.bigPoster:hover img {
+  opacity: 0.85;
+}
+
+.bigPosterBook {
+  margin: 20px;
+  background-color: #121212;
+  padding: 1px;
+}
+
+.bigPosterBook p, .bigPosterBook h2 {
+  margin: 15px;
+}
+
+.bigPosterBook p {
+  text-transform: capitalize;
+}
+
+.bigPosterBook img {
+  width: 100%;
+}
+
+.bigPosterBook:hover {
+  background-color: #333232;
+}
+
+.bigPosterBook:hover img {
+  opacity: 0.85;
+}
+
 body {
   margin: 0;
   background-color: black;
@@ -254,6 +320,10 @@ h4,
 h5,
 h6 {
   margin: 4px;
+}
+
+section {
+  margin-top: 50px;
 }
 
 #home {
@@ -293,10 +363,7 @@ h6 {
   }
 }
 
-#movie,
-#game,
-#show,
-#music {
+.single-poster {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -312,10 +379,7 @@ h6 {
           justify-content: center;
 }
 
-#movie h2,
-#game h2,
-#show h2,
-#music h2 {
+.single-poster h2 {
   color: #f2ba49;
   margin-bottom: 50px;
 }

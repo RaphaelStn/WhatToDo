@@ -30,6 +30,7 @@ $main-color: #f2ba49;
 @import "./nav";
 @import "./poster";
 @import "./button";
+@import "./bigPoster";
 
 // General rules
 
@@ -46,6 +47,9 @@ h4,
 h5,
 h6 {
   margin: 4px;
+}
+section {
+  margin-top:50px;
 }
 #home {
   @include flexCenter(column);
@@ -65,10 +69,7 @@ h6 {
     }
   }
 }
-#movie,
-#game,
-#show,
-#music {
+.single-poster {
   @include flexCenter(column);
   h2 {
     color: $main-color;

@@ -1,23 +1,23 @@
 {% extends 'layout.twig' %}
 
 {% block title %}
-Games
+{{game.name}}
 {% endblock %}
 
 
 {% block content %}
-<section id="randomGame">
+<section class="random">
 <div class="bigPoster">
     <img src="{{game.background_image}}"></img>
-    <p>{{game.name}}</p>
-    <p>{{game.rating}}</p>
-    <p>{{game.metacritic}}</p>
-    <p>{{game.released|date("m/d/Y")}}</p>
-    <p> Categories : 
+    <h2>{{game.name}}</h2>
+    <p>Game rating: {{game.rating}}/5 <i class="fas fa-star"></i></p>
+    <p>Release date: {{game.released|date("m/d/Y")}}</p>
+    <p> Categories: 
     {% for genre in game.genres %}
         {{ genre.name }}
     {% endfor %}
 </div>
+<a id="game-random" href="index.php?p=gameRandom" class="btn-random">Dont feel like playing this? Try again !</a>
 </section>
 {% endblock %}
 

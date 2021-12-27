@@ -32,13 +32,27 @@ Class FrontendController extends Controller {
         $twig = $this->loadTwig();
         echo $twig -> render('game.twig',['games' => $games]);
     }
-    public function music() {
+    public function book() {
         $twig = $this->loadTwig();
-        echo $twig -> render('music.twig');
+        echo $twig -> render('book.twig');
     }
     public function gameRandom() {
-        $twig = $this->loadTwig();
         $game = $this->games->GetRandomGame();
+        $twig = $this->loadTwig();
         echo $twig -> render('randomGame.twig',['game' => $game]);
+    }
+    public function movieRandom() {
+        $movie = $this->movies->GetRandomMovie();
+        $twig = $this->loadTwig();
+        echo $twig -> render('randomMovie.twig',['movie' => $movie]);
+    }
+    public function showRandom() {
+        $show = $this->movies->GetRandomShow();
+        $twig = $this->loadTwig();
+        echo $twig -> render('randomShow.twig',['show' => $show]);
+    }
+    public function bookRandom() {
+        $twig = $this->loadTwig();
+        echo $twig -> render('randomBook.twig');
     }
 }

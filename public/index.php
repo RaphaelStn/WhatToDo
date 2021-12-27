@@ -28,11 +28,24 @@ switch ($p) {
         $controller = new FrontendController();
         $controller->game();
         break;
-    case 'music' : 
+    case 'book' : 
         $controller = new FrontendController();
-        $controller->music();
+        $controller->book();
         break;
     case 'gameRandom' :
         $controller = new FrontendController();
         $controller-> gameRandom();
+        break;
+    case 'movieRandom' :
+        $controller = new FrontendController();
+        $controller-> movieRandom();
+        break;
+    case 'showRandom' :
+        $controller = new FrontendController();
+        $controller-> showRandom();
+        break;
+    case 'bookRandom' :
+        $controller = new FrontendController();
+        $controller-> bookRandom();
+        break;
 }

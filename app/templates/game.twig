@@ -7,9 +7,9 @@ Games
 
 {% block content %}
 
-<section id="game">
+<section class="single-poster">
     <h2> Let us chose what random game you might want to play !</h2>
-    <p> These are some of the top rated games, feel to try one out, or add to your favorites.<P>
+    <p> These are some of the top rated games, feel to try one, or add it to your favorites.</p>
     <div class="container-poster container-game">
         {% for game in games %}
             <div class="poster">
@@ -18,11 +18,11 @@ Games
             </div>
         {% endfor %}
     </div>
-    <a id="game-random" href="index.php?p=gameRandom" class="btn-random">Let the fate decide</a>
+    <a href="index.php?p=gameRandom" class="btn-random">Let the fate decide</a>
 </section>
 
 {% endblock %}
 
 {% block scripts %}
-<script src="scripts/game.js"></script>
+<script src="scripts/gameHTML.js"></script>
 {% endblock %}

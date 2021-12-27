@@ -10,8 +10,7 @@ Home
 <section id="home">
     <h1> You don't know what to do? Let us help find an idea ! </h1>
     <p> WhatToDo is a website that will help you choose a random movie, show, game or music to play, you can select which on want, or simply pick at random between everthing.</p>
-    <p>
-    <p class="p-main"><a href="index.php?p=movie">Want to watch a movie? <i class="fas fa-arrow-right"></i></a></p>
+    <p class="p-main"><a href="index.php?p=movie">Let's watch a movie !</a></p>
     <div class="container-poster container-movie">
         {% for movie in movies %}
             <div class="poster">
@@ -20,7 +19,7 @@ Home
             </div>
         {% endfor %}
     </div>
-    <p class="p-main"><a href="index.php?p=show">Or maybe a show? <i class="fas fa-arrow-right"></i></a></p>
+    <p class="p-main"><a href="index.php?p=show">Or maybe a show? </i></a></p>
     <div class="container-poster container-show">
         {% for show in shows %}
             <div class="poster">
@@ -29,7 +28,7 @@ Home
             </div>
         {% endfor %}
     </div>
-    <p class="p-main"><a href="index.php?p=game">Looking for a game to play  <i class="fas fa-arrow-right"></i></a></p>
+    <p class="p-main"><a href="index.php?p=game">Looking for a game to play ...</a></p>
     <div class="container-poster container-game">
         {% for game in games %}
             <div class="poster">
@@ -38,12 +37,12 @@ Home
             </div>
         {% endfor %}
     </div>
-    <p class="p-main"><a href="index.php?p=music">Or listen to songs while working.. <i class="fas fa-arrow-right"></i></a></p>
-    <div class="container-poster container-music">
+    <p class="p-main"><a href="index.php?p=book">... Or even read a book !</a></p>
+    <div class="container-poster container-book">
     </div>
 
 {% endblock %}
 
 {% block scripts %}
-<script src="scripts/home.js"></script>
+<script src="scripts/homeHTML.js"></script>
 {% endblock %}
