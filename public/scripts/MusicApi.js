@@ -3,7 +3,7 @@ class MusicApi {
         this.musics = null;
     }
     async initApi() {
-        let thisData = new Promise(function(done, fail) {
+        let thisData = new Promise(function(done, fail) { //**** */
             let settings = {
                 "async": true,
                 "crossDomain": true,

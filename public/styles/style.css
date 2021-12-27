@@ -93,8 +93,8 @@ nav #toggle {
 }
 
 .navbar-item:hover {
-  color: #F2BA49;
-  border-bottom: solid #F2BA49;
+  color: #f2ba49;
+  border-bottom: solid #f2ba49;
 }
 
 @media screen and (max-width: 800px) {
@@ -134,14 +134,14 @@ nav #toggle {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: calc(5 *(150px + 10px));
+  width: calc(5 * (150px + 10px));
   gap: 9px;
   overflow: hidden;
 }
 
 @media screen and (max-width: 800px) {
   .container-poster {
-    width: calc(3 *(90px + 10px));
+    width: calc(3 * (90px + 10px));
   }
 }
 
@@ -205,7 +205,7 @@ nav #toggle {
   border-radius: 2px;
   cursor: pointer;
   text-align: center;
-  color: #F2BA49;
+  color: #f2ba49;
   z-index: 3;
   padding-top: 20px;
 }
@@ -223,13 +223,13 @@ nav #toggle {
 a.btn-random {
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid #F2BA49;
+  border: 0.1em solid #f2ba49;
   margin: 75px;
   border-radius: 0.12em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
-  color: #F2BA49;
+  color: #f2ba49;
   text-align: center;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
@@ -237,17 +237,22 @@ a.btn-random {
 
 a.btn-random:hover {
   color: #000000;
-  background-color: #F2BA49;
+  background-color: #f2ba49;
 }
 
 body {
   margin: 0;
   background-color: black;
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 4px;
 }
 
@@ -268,27 +273,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #home h1 {
-  color: #F2BA49;
+  color: #f2ba49;
   margin-bottom: 50px;
 }
 
-#home h2 {
-  width: calc(5 *(150px + 10px));
+#home .p-main {
+  width: calc(5 * (150px + 10px));
   margin-top: 10px;
 }
 
-#home h2 a {
+#home .p-main a {
   text-decoration: none;
   color: white;
 }
 
 @media screen and (max-width: 800px) {
-  #home h2 {
-    width: calc(3 *(90px + 10px));
+  #home .p-main {
+    width: calc(3 * (90px + 10px));
   }
 }
 
-#movie, #game, #show, #music {
+#movie,
+#game,
+#show,
+#music {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -304,8 +312,11 @@ h1, h2, h3, h4, h5, h6 {
           justify-content: center;
 }
 
-#movie h2, #game h2, #show h2, #music h2 {
-  color: #F2BA49;
+#movie h2,
+#game h2,
+#show h2,
+#music h2 {
+  color: #f2ba49;
   margin-bottom: 50px;
 }
 /*# sourceMappingURL=style.css.map */

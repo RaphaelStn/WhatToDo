@@ -1,68 +1,77 @@
 // Variables
 
-$main-color : #F2BA49;
+$main-color: #f2ba49;
 
 //mixins
 @mixin posterWidth($number, $img-width) {
-    width : calc(#{$number} *(#{$img-width} + 10px));
+  width: calc(#{$number} * (#{$img-width} + 10px));
 }
-@mixin flexAlignCenter($direction) { // flex without justify for posters
-    display: flex;
-    flex-direction: $direction;
-    align-items: center;
+@mixin flexAlignCenter($direction) {
+  // flex without justify for posters
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
 }
 @mixin flexCenter($direction) {
-    @include flexAlignCenter($direction);
-    justify-content: center;
+  @include flexAlignCenter($direction);
+  justify-content: center;
 }
-@mixin media-max($max-width){
-    @media screen and (max-width: $max-width) {
-        & { @content};
+@mixin media-max($max-width) {
+  @media screen and (max-width: $max-width) {
+    & {
+      @content;
     }
+  }
 }
 
 // import
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-@import './nav';
-@import './poster';
-@import './button';
+@import "./nav";
+@import "./poster";
+@import "./button";
 
 // General rules
 
 body {
-    margin: 0;
-    background-color: black ;
-    color: white;
-    font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-family: "Roboto", sans-serif;
 }
-h1, h2, h3, h4, h5, h6 {
-    margin: 4px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 4px;
 }
 #home {
-    @include flexCenter(column);
-    h1 {
-        color: $main-color;
-        margin-bottom: 50px;
+  @include flexCenter(column);
+  h1 {
+    color: $main-color;
+    margin-bottom: 50px;
+  }
+  .p-main {
+    @include posterWidth(5, 150px);
+    margin-top: 10px;
+    a {
+      text-decoration: none;
+      color: white;
     }
-    h2 {
-        @include posterWidth(5, 150px);
-        margin-top: 10px;
-        a {
-            text-decoration: none;
-            color:white;
-        }
-        @include media-max(800px) {
-            @include posterWidth(3, 90px);
-        }
+    @include media-max(800px) {
+      @include posterWidth(3, 90px);
     }
+  }
 }
-#movie, #game, #show, #music {
-    @include flexCenter(column);
-    h2 {
-        color: $main-color;
-        margin-bottom: 50px;
-    }
+#movie,
+#game,
+#show,
+#music {
+  @include flexCenter(column);
+  h2 {
+    color: $main-color;
+    margin-bottom: 50px;
+  }
 }
-
-

@@ -1,0 +1,26 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Games
+{% endblock %}
+
+
+{% block content %}
+<section id="randomGame">
+<div class="bigPoster">
+    <img src="{{game.background_image}}"></img>
+    <p>{{game.name}}</p>
+    <p>{{game.rating}}</p>
+    <p>{{game.metacritic}}</p>
+    <p>{{game.released|date("m/d/Y")}}</p>
+    <p> Categories : 
+    {% for genre in game.genres %}
+        {{ genre.name }}
+    {% endfor %}
+</div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

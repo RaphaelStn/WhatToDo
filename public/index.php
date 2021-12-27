@@ -32,4 +32,7 @@ switch ($p) {
         $controller = new FrontendController();
         $controller->music();
         break;
+    case 'gameRandom' :
+        $controller = new FrontendController();
+        $controller-> gameRandom();
 }

@@ -1,10 +1,4 @@
-var resizeTimeout;
-window.addEventListener('resize', function(event) {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(function(){
-    window.location.reload();
-  }, 1500);
-});
+// scripts for home page setting sliders
 
 let music = new MusicApi()
 let getMusic = music.initApi().then((dataMusic) => {

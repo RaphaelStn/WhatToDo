@@ -9,6 +9,7 @@ Games
 
 <section id="game">
     <h2> Let us chose what random game you might want to play !</h2>
+    <p> These are some of the top rated games, feel to try one out, or add to your favorites.<P>
     <div class="container-poster container-game">
         {% for game in games %}
             <div class="poster">
@@ -17,7 +18,7 @@ Games
             </div>
         {% endfor %}
     </div>
-    <a id="game-random" href="" class="btn-random">Let the fate decide</a>
+    <a id="game-random" href="index.php?p=gameRandom" class="btn-random">Let the fate decide</a>
 </section>
 
 {% endblock %}
