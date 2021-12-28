@@ -2,8 +2,9 @@ class BooksApi {
     constructor() {
         this.books = null;
     }
+    //async function to get API and return data in promise
     async initApi() {
-        let thisData = new Promise(function(done, fail) { //**** */
+        let thisData = new Promise(function(done, fail) {
             let settings = {
                 "async": true,
                 "crossDomain": true,

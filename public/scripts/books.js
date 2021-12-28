@@ -9,6 +9,7 @@ class Books {
         });
     }
     trending(books) {
+        //Creating the poster for each book in map() JS function
         this.poster = document.createElement('div');
         this.poster.className = 'poster';
         this.html.appendChild(this.poster);
@@ -20,6 +21,7 @@ class Books {
         this.poster.appendChild(this.name);
     }
     random(dataBooks) {
+        //Creating one poster from random array
         dataBooks = dataBooks.results.books;
         let book = dataBooks[Math.floor(Math.random()*dataBooks.length)];
         console.log(book);

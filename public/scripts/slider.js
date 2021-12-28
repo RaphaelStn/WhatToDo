@@ -3,14 +3,16 @@ class Slider {
 		this.slider = slider;
 		this.slides = this.slider.children;
 		this.img = this.slider.querySelector('img');
-		this.containerWidth =  this.slider.offsetWidth;
-		this.imgWidth = this.img.offsetWidth;
+		this.containerWidth =  this.slider.offsetWidth; // getting the total width of div
+		this.imgWidth = this.img.offsetWidth; // getting the width of one img
 		this.index = 1; //Index for next slide
-		this.value = 1;
+		this.value = 1; // value for css translate method
 		this.slideLength = this.slides.length;
 		this.setButtons();
 		this.slides = Array.prototype.slice.call(this.slides)
+		
 	}
+	//setting of buttons of sliders
 	setButtons() {
 		this.nextBtn = document.createElement('div');
 		this.nextBtn.innerHTML = "<i class='fas fa-chevron-right'></i>"
@@ -26,7 +28,16 @@ class Slider {
 			this.prevSlide();
 		});
 		this.slider.appendChild(this.prevBtn);
+		// function to reload on resize, to refresh sliders to prevent bugs
+		var resizeTimeout;
+		window.addEventListener('resize', function(event) {
+  			clearTimeout(resizeTimeout);
+  			resizeTimeout = setTimeout(function(){
+    			window.location.reload();
+  			}, 1500);
+		});
 	}
+	//logic for navigation, using total div width in relation of image width, without forgetting the gap between each img to prevent overflowing
 	nextSlide() {
 		if(this.index < this.slideLength - (this.containerWidth/this.imgWidth - 1)) {
 			for (let slide of this.slides.slice(0, -2)) {
