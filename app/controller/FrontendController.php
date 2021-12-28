@@ -55,4 +55,8 @@ Class FrontendController extends Controller {
         $twig = $this->loadTwig();
         echo $twig -> render('randomBook.twig');
     }
+    public function http404() {
+        $twig = $this->loadTwig();
+        echo $twig -> render('http404.twig'); 
+    }
 }

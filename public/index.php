@@ -48,4 +48,7 @@ switch ($p) {
         $controller = new FrontendController();
         $controller-> bookRandom();
         break;
+    default : 
+        $controller = new FrontendController();
+        $controller->http404();
 }
