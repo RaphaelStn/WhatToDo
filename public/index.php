@@ -1,9 +1,9 @@
 <?php
 use App\Controller\FrontendController;
 
-define('ROOT', dirname(__DIR__)); // On définit une variable ROOT pour naviguer dans les dossiers plus facilement.
+define('ROOT', dirname(__DIR__)); // variable 'ROOT' for faster acces to main dir
 require  ROOT . '/app/App.php';
-App::load(); // Load() Initialise la session et les AutoLoaders des namespaces CORE et APP.
+App::load(); // Init session & init autoloader / twig
 
 if(isset($_GET['p'])) {
     $p = $_GET['p'];

@@ -6,16 +6,16 @@ Class FrontendController extends Controller {
 
     public function __construct(){
         parent::__construct();
-        $this->loadModel('movies');
+        $this->loadModel('movies'); // preload different API via LoadModel function defined in Core/Controller
         $this->loadModel('games');
     }
     
     public function home() {
-        $movies = $this->movies->getTrendingMovies();
+        $movies = $this->movies->getTrendingMovies(); // Fetching trending movie via function defined in the models API (ie: moviesApi here)
         $shows = $this->movies->getTrendingShows();
         $games = $this->games->getTrendingGames();
         $twig = $this->loadTwig();
-        echo $twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games]);
+        echo $twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games]); // Rendering twig and sending datas to twig
     }    
     public function movie() {
         $movies = $this->movies->getTrendingMovies();

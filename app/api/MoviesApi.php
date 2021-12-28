@@ -5,7 +5,7 @@ use \Core\Api\Api;
 class MoviesApi extends Api {
 
     public function getTrendingMovies() {
-        $this->data = $this->getCurl('https://api.themoviedb.org/3/trending/movie/week?api_key=' . $this-> key_movie . '');
+        $this->data = $this->getCurl('https://api.themoviedb.org/3/trending/movie/week?api_key=' . $this-> key_movie . ''); // getCurl function logic defined in Core/Api, faster use of API's URL
         return array_slice($this->data, 0, 10);
     }
     public function getTrendingShows() {

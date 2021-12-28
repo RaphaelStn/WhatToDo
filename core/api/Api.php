@@ -7,7 +7,7 @@ class Api {
         $this -> key_game = $key_game;
     }
 
-    public function getCurl($url) {
+    public function getCurl($url) { // Curl function to fetch API
         $this->curl = curl_init($url);
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true );

@@ -7,7 +7,7 @@ class Controller {
     }
 
     protected function loadModel($model_name) {
-        $this -> $model_name = \App::getInstance()->getApi($model_name); // loading api faster
+        $this -> $model_name = \App::getInstance()->getApi($model_name); // loading api faster with model name in constructor, to load the good API class file
     }
 
     protected function loadTwig() { // loading twig
