@@ -1,9 +1,13 @@
 <?php
 use App\Controller\FrontendController;
 
-define('ROOT', dirname(__DIR__)); // variable 'ROOT' for faster acces to main dir
+// variable 'ROOT' for faster acces to main dir
+define('ROOT', dirname(__DIR__)); 
+
+
+// Init session & init autoloader / twig
 require  ROOT . '/app/App.php';
-App::load(); // Init session & init autoloader / twig
+App::load(); 
 
 if(isset($_GET['p'])) {
     $p = $_GET['p'];

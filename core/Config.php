@@ -6,7 +6,8 @@ class Config{
     private $settings = [];
     private static $_instance;
 
-    public static function getInstance($file) { // Use of a singleton to always get same instance of Config class
+    // Use of a singleton to always get same instance of Config class
+    public static function getInstance($file) {
         if(self::$_instance === null) {
             self::$_instance = new Config($file);
         }
@@ -16,7 +17,9 @@ class Config{
     public function __construct($file) { 
         $this -> settings = require ($file);
     }
-    public function get($key) { // return API keys
+
+    // return API keys
+    public function get($key) {
         if(!isset($this -> settings[$key])) {
             return null;
         }
