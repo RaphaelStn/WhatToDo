@@ -8,7 +8,7 @@ class Api {
     }
 
     // Curl function to fetch API
-    public function getCurl($url) {
+    public function getCurl($url, $search = false) {
         $this->curl = curl_init($url);
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true );
@@ -16,9 +16,14 @@ class Api {
         if ($this->data === false) {
             var_dump(curl_error($this->curl));
         } else {
-            $this->data=json_decode($this->data, true);
-            $this->data = $this->data['results'];
-            return $this->data;
+            if($search == true) {
+                $this->data=json_decode($this->data, true);
+                return $this->data;
+            } else {
+                $this->data=json_decode($this->data, true);
+                $this->data = $this->data['results'];
+                return $this->data;
+            }
         }
         curl_close($this->curl);
     }

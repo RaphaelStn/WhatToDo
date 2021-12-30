@@ -28,14 +28,6 @@ class Slider {
 			this.prevSlide();
 		});
 		this.slider.appendChild(this.prevBtn);
-		// function to reload on resize, to refresh sliders to prevent bugs
-		var resizeTimeout;
-		window.addEventListener('resize', function(event) {
-  			clearTimeout(resizeTimeout);
-  			resizeTimeout = setTimeout(function(){
-    			window.location.reload();
-  			}, 1500);
-		});
 	}
 	//logic for navigation, using total div width in relation of image width, without forgetting the gap between each img to prevent overflowing
 	nextSlide() {

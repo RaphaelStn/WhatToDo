@@ -1,14 +1,16 @@
 <?php 
 namespace App\Controller;
 use \Core\Controller\Controller;
+use Core\Auth\DBAuth;
 
 Class FrontendController extends Controller {
 
     public function __construct(){
         parent::__construct();
         // preload different API via LoadModel function defined in Core/Controller
-        $this->loadModel('movies'); 
-        $this->loadModel('games');
+        $this->loadModel('movies', 'api'); 
+        $this->loadModel('games', 'api');
+        $this->loadModel('users', 'table');
     }
     
     public function home() {
@@ -18,7 +20,7 @@ Class FrontendController extends Controller {
         $games = $this->games->getTrendingGames();
         $twig = $this->loadTwig();
         // Rendering twig and sending datas to twig
-        echo $twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games]); 
+        echo $twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games]);
     }
 
     public function movie() {
@@ -44,31 +46,54 @@ Class FrontendController extends Controller {
         echo $twig -> render('book.twig');
     }
 
-    public function gameRandom() {
-        $game = $this->games->GetRandomGame();
+    public function game_poster() {
+        $game = $this->games->getRandomGame();
         $twig = $this->loadTwig();
-        echo $twig -> render('randomGame.twig',['game' => $game]);
+        echo $twig -> render('game_poster.twig',['game' => $game]);
     }
 
-    public function movieRandom() {
-        $movie = $this->movies->GetRandomMovie();
-        $twig = $this->loadTwig();
-        echo $twig -> render('randomMovie.twig',['movie' => $movie]);
+    public function movie_poster() {
+        //if id is set in GET method, display specific movie, else display random
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $movie = $this->movies->getIdMovie($id);
+            $twig = $this->loadTwig();
+            echo $twig -> render('movie_poster.twig',['movie' => $movie]);
+        } 
+        else {
+            $movie = $this->movies->getRandomMovie();
+            $twig = $this->loadTwig();
+            echo $twig -> render('movie_poster.twig',['movie' => $movie]);
+        }
     }
 
-    public function showRandom() {
-        $show = $this->movies->GetRandomShow();
+    public function show_poster() {
+        $show = $this->movies->getRandomShow();
         $twig = $this->loadTwig();
-        echo $twig -> render('randomShow.twig',['show' => $show]);
+        echo $twig -> render('show_poster.twig',['show' => $show]);
     }
 
-    public function bookRandom() {
+    public function book_poster() {
         $twig = $this->loadTwig();
-        echo $twig -> render('randomBook.twig');
+        echo $twig -> render('book_poster.twig');
     }
     
     public function http404() {
         $twig = $this->loadTwig();
         echo $twig -> render('http404.twig'); 
+    }
+
+    public function login() {
+        $twig = $this->loadTwig();
+        $errors = false;
+        if(!empty($_POST) AND isset($_POST['connect'])){
+            $auth = new DBAuth(\App::getInstance()->getdb());
+            if($auth -> login($_POST['username'], $_POST['password'])) {
+                header('Location: index.php?p=login');
+            }else {
+                $errors = true;
+            }
+        }
+        echo $twig -> render('login.twig', ['errors' => $errors]);
     }
 }

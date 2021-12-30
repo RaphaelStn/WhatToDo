@@ -1,5 +1,6 @@
 <?php
 use App\Controller\FrontendController;
+use App\Controller\BackEndController;
 
 // variable 'ROOT' for faster acces to main dir
 define('ROOT', dirname(__DIR__)); 
@@ -14,7 +15,6 @@ if(isset($_GET['p'])) {
 } else {
 $p = 'home';
 }
-
 switch ($p) {
     case 'home' : 
         $controller = new FrontendController();
@@ -36,22 +36,32 @@ switch ($p) {
         $controller = new FrontendController();
         $controller->book();
         break;
-    case 'gameRandom' :
+    case 'game_poster' :
         $controller = new FrontendController();
-        $controller-> gameRandom();
+        $controller-> game_poster();
         break;
-    case 'movieRandom' :
+    case 'movie_poster' :
         $controller = new FrontendController();
-        $controller-> movieRandom();
+        $controller-> movie_poster();
         break;
-    case 'showRandom' :
+    case 'show_poster' :
         $controller = new FrontendController();
-        $controller-> showRandom();
+        $controller-> show_poster();
         break;
-    case 'bookRandom' :
+    case 'book_poster' :
         $controller = new FrontendController();
-        $controller-> bookRandom();
+        $controller-> book_poster();
         break;
+    case 'login' : 
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] = true) {
+            $controller = new BackendController();
+            $controller->home();
+            break;
+        } else {
+            $controller = new FrontEndController();
+            $controller->login();
+            break;
+        }
     default : 
         $controller = new FrontendController();
         $controller->http404();

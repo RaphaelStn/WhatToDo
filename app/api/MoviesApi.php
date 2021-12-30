@@ -38,4 +38,9 @@ class MoviesApi extends Api {
         $this->rand_keys = array_rand($this->data, 1);
         return $this->data[$this->rand_keys];
     }
+
+    public function getIdMovie($id) {
+        $this->data = $this ->getCurl('https://api.themoviedb.org/3/movie/'. $id .'?api_key=' . $this-> key_movie . '&language=en-US', true);
+        return $this->data;
+    }
 }
