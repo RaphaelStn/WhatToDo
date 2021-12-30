@@ -6,6 +6,7 @@ Register
 
 
 {% block content %}
+
 <form method="post">
     <label for="username">username</label>
     <input name ="username" type="text">
@@ -16,10 +17,12 @@ Register
     <button name="create-account" type="submit">Create an account</button>
 </form>
 
-{% if confirm_prompt == true %}
-<p>Account created, <a href="index.php?p=login">Please connect</a></p>
+{% for error in errors %}
+<p>{{error}}</p>
+{% endfor %}
+{% if account_created == true %}
+<p>Your account is created, please connect <a href="index.php?p=login">here</a></p>
 {% endif %}
-
 {% endblock %}
 
 {% block scripts %}

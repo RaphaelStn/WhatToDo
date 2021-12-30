@@ -13,7 +13,7 @@ class DBAuth {
     public function login ($username, $password) {
         $user = $this -> db -> prepare ('SELECT * from users WHERE username=?', [$username], null, true);
         if ($user) {
-            if($user -> password === sha1($password)) {
+            if(hash_equals($user -> password, crypt($password, 'messier87'))) {
                 $_SESSION['auth'] = true;
                 $_SESSION['username'] = $user -> username;
                 return true;

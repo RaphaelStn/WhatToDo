@@ -6,12 +6,17 @@ Login
 
 
 {% block content %}
+
 <form method="post">
+    <label for="username">username</label>
     <input type="text" name="username">
+    <label for="password">password</label>
     <input type="password" name="password">
-    <button type="submit" name="connect" value="Connect">Connect</button>
+    <button type="submit" name="connect">Connect</button>
 </form>
+
 <p>No account? <a href="index.php?p=register">Register here</a></p>
+
 {% if errors == true %}
 <p>Username or password incorrect</p>
 {% endif %}

@@ -118,12 +118,37 @@ Class FrontendController extends Controller {
     }
 
     public function register() {
-        $confirm_prompt = false;
-        $error_prompt = false;
-        if(!empty($_POST)) {
-            $this->users->createAccount(['username' => htmlspecialchars($_POST['username']), 'password' => htmlspecialchars($_POST['password']), 'email' => htmlspecialchars($_POST['email'])]);
-            $confirm_prompt = true;
+        $errors = [];
+        $account_created = false;
+        $account_exist = false;
+        if(isset($_POST['create-account']) && !empty($_POST['username']) && !empty($_POST['password']) &&  !empty($_POST['email'])) {
+            //Username verification to prevent multiple account with same name account 
+            $users = $this->users->getUsers();
+            foreach($users as $user) {
+                //if username or email already in use, stop the foreach loop
+                if($user->username == $_POST['username'] || $user->email == $_POST['email']) {
+                    $account_exist = true;
+                    break;
+                }
+            }
+            if ($account_exist == false) {
+                $this->users->createAccount(['username' => htmlspecialchars($_POST['username']), 'password' => crypt(htmlspecialchars($_POST['password']), 'messier87'), 'email' => htmlspecialchars($_POST['email'])]);
+                $account_created = true;
+            } 
+            //Error checks in the array $errors
+            else if ($account_exist == true) {
+                array_push($errors, "Username or Email already in use !");
+            }
         }
-        echo $this->twig -> render('register.twig'); 
+        if(isset($_POST['create-account']) && empty($_POST['username'])) {
+            array_push($errors, "Please fill username !");
+        }
+        if(isset($_POST['create-account']) && empty($_POST['password'])) {
+            array_push($errors, "Please fill password !");
+        }
+        if(isset($_POST['create-account']) && empty($_POST['email'])) {
+            array_push($errors, "Please fill email !");
+        }
+        echo $this->twig -> render('register.twig', ['errors' => $errors, 'account_created' => $account_created]); 
     }
 }

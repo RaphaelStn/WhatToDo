@@ -3,6 +3,10 @@ namespace App\Table;
 use Core\Table\Table;
 
 class UsersTable extends Table {
+    
+    public function getUsers() {
+        return $this-> query("SELECT username, email FROM users");
+    }
     public function createAccount($fields) {
         $sql_parts = [];
         $attributes = [];
