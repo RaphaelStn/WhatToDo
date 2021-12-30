@@ -1,6 +1,6 @@
 <?php
 use App\Controller\FrontendController;
-use App\Controller\BackEndController;
+use App\Controller\BackendController;
 
 // variable 'ROOT' for faster acces to main dir
 define('ROOT', dirname(__DIR__)); 
@@ -58,12 +58,12 @@ switch ($p) {
             $controller->home();
             break;
         } else {
-            $controller = new FrontEndController();
+            $controller = new FrontendController();
             $controller->login();
             break;
         }
     case 'register' : 
-        $controller = new FrontEndController();
+        $controller = new FrontendController();
         $controller->register();
         break;
     default : 
