@@ -9,7 +9,6 @@ class BackendController extends FrontendController {
     }
 
     public function home() {
-        $twig = $this->loadTwig();
         if(isset($_POST['disconnect'])) {
             unset($_SESSION['auth']);
             unset($_SESSION['username']);
@@ -17,6 +16,6 @@ class BackendController extends FrontendController {
         }
 
         $username = $_SESSION['username'];
-        echo $twig -> render('backend/home.twig',['username' => $username]);
+        echo $this->twig -> render('backend/home.twig',['username' => $username]);
     }
 }

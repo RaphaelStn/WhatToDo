@@ -16,7 +16,7 @@ Home
             <div class="poster">
                 <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
                 <p>{{movie.title}}</p>
-                <a href="index.php?p=movie_poster&id={{movie.id}}" class="more">See more</a>
+                <a href="index.php?p=movie_poster&id={{movie.id}}" class="more">See more >></a>
             </div>
         {% endfor %}
     </div>
@@ -26,6 +26,7 @@ Home
             <div class="poster">
                 <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
                 <p>{{show.name}}</p>
+                <a href="index.php?p=show_poster&id={{show.id}}" class="more">See more >></a>
             </div>
         {% endfor %}
     </div>
@@ -35,6 +36,7 @@ Home
             <div class="poster">
                 <img src="{{game.background_image}}"></img>
                 <p>{{game.name}}</p>
+                <a href="index.php?p=game_poster&id={{game.id}}" class="more">See more >></a>
             </div>
         {% endfor %}
     </div>
@@ -45,5 +47,5 @@ Home
 {% endblock %}
 
 {% block scripts %}
-<script src="scripts/homeHTML.js"></script>
+<script src="scripts/home.js"></script>
 {% endblock %}

@@ -43,4 +43,9 @@ class MoviesApi extends Api {
         $this->data = $this ->getCurl('https://api.themoviedb.org/3/movie/'. $id .'?api_key=' . $this-> key_movie . '&language=en-US', true);
         return $this->data;
     }
+
+    public function getIdShow($id) {
+        $this->data = $this ->getCurl('https://api.themoviedb.org/3/tv/'. $id .'?api_key=' . $this-> key_movie . '&language=en-US', true);
+        return $this->data;
+    }
 }

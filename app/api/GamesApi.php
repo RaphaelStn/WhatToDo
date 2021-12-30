@@ -24,4 +24,9 @@ class GamesApi extends Api {
         $this->rand_keys = array_rand($this->data, 1);
         return $this->data[$this->rand_keys];
     }
+
+    public function getIdGame($id) {
+        $this->data = $this->getCurl('https://api.rawg.io/api/games/'. $id .'?key=' . $this-> key_game . '', true); 
+        return $this->data;
+    }
 }

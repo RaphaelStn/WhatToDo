@@ -3,12 +3,12 @@ class BooksApi {
         this.books = null;
     }
     //async function to get API and return data in promise
-    async initApi() {
+    async initApi(url) {
         let thisData = new Promise(function(done, fail) {
             let settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=PxFAgpj2Q8LGP27Sv6tAtQit58G8V3EN",
+                "url": url,
                 "method": "GET",
             };
             $.get(settings, function(dataPromise) {

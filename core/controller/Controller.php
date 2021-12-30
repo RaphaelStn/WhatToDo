@@ -4,6 +4,7 @@ namespace Core\Controller;
 class Controller {
 
     public function __construct() {
+        $twig = $this->loadTwig();
     }
 
     // loading api faster with model name in constructor, to load the good API class file

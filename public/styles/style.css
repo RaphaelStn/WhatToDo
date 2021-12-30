@@ -221,6 +221,11 @@ nav #toggle {
   right: -1px;
 }
 
+.more {
+  color: #f2ba49;
+  text-decoration: none;
+}
+
 a.btn-random {
   display: inline-block;
   padding: 0.35em 1.2em;
@@ -296,14 +301,6 @@ a.btn-random:hover {
 
 .bigPosterBook img {
   width: 100%;
-}
-
-.bigPosterBook:hover {
-  background-color: #333232;
-}
-
-.bigPosterBook:hover img {
-  opacity: 0.85;
 }
 
 body {

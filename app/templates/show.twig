@@ -15,6 +15,7 @@ Shows
             <div class="poster">
                 <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
                 <p>{{show.name}}</p>
+                <a href="index.php?p=show_poster&id={{show.id}}" class="more">See more >></a>
             </div>
         {% endfor %}
     </div>
@@ -24,5 +25,5 @@ Shows
 {% endblock %}
 
 {% block scripts %}
-<script src="scripts/showHTML.js"></script>
+<script src="scripts/show.js"></script>
 {% endblock %}
