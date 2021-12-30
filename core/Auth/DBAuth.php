@@ -21,8 +21,4 @@ class DBAuth {
         }
         return false;
     }
-
-    public function logged() {
-       return isset($_SESSION['auth']);
-    }
 }

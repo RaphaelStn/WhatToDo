@@ -24,6 +24,17 @@ class App {
         return self::$_instance;
     }
 
+    //launch DB class 
+    public function getDb() {
+        $this -> config = Config::getInstance(ROOT . '/config/config.php');
+        if($this -> db_instance === null){
+            return $this -> db_instance = new MysqlDatabase($this -> config -> get('database'), $this -> config -> get('username'), $this -> config -> get('password'), $this -> config -> get('hostname'));
+
+        } else {
+            return $this -> db_instance;
+        }
+    }
+
      // Launch API's classes with config keys in constructor
     public function getApi($name) { 
         // fetching API keys
@@ -37,16 +48,5 @@ class App {
     public function getTable($name) { 
         $class_name = '\\App\\Table\\' . ucfirst($name) . 'Table'; 
         return new $class_name($this -> getDb());
-    }
-
-    //launch DB class 
-    public function getDb() {
-        $this -> config = Config::getInstance(ROOT . '/config/config.php');
-        if($this -> db_instance === null){
-           return $this -> db_instance = new MysqlDatabase($this -> config -> get('database'), $this -> config -> get('username'), $this -> config -> get('password'), $this -> config -> get('hostname'));
-
-        } else {
-            return $this -> db_instance;
-        }
     }
 }

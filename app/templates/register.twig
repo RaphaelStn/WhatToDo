@@ -1,0 +1,26 @@
+{% extends 'layout.twig' %}
+
+{% block title %}
+Register
+{% endblock %}
+
+
+{% block content %}
+<form method="post">
+    <label for="username">username</label>
+    <input name ="username" type="text">
+    <label for="password">password</label>
+    <input name="password" type="password">
+    <label for="email">Your e-mail</label>
+    <input name="email" type="email">
+    <button name="create-account" type="submit">Create an account</button>
+</form>
+
+{% if confirm_prompt == true %}
+<p>Account created, <a href="index.php?p=login">Please connect</a></p>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

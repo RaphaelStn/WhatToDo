@@ -99,13 +99,10 @@ Class FrontendController extends Controller {
         echo $this->twig -> render('book_poster.twig');
     }
     
-    public function http404() {
-        echo $this->twig -> render('http404.twig'); 
-    }
-
+    
     public function login() {
         $errors = false;
-        if(!empty($_POST) AND isset($_POST['connect'])){
+        if(!empty($_POST)){
             $auth = new DBAuth(\App::getInstance()->getdb());
             if($auth -> login($_POST['username'], $_POST['password'])) {
                 header('Location: index.php?p=login');
@@ -114,5 +111,19 @@ Class FrontendController extends Controller {
             }
         }
         echo $this->twig -> render('login.twig', ['errors' => $errors]);
+    }
+
+    public function http404() {
+        echo $this->twig -> render('http404.twig'); 
+    }
+
+    public function register() {
+        $confirm_prompt = false;
+        $error_prompt = false;
+        if(!empty($_POST)) {
+            $this->users->createAccount(['username' => htmlspecialchars($_POST['username']), 'password' => htmlspecialchars($_POST['password']), 'email' => htmlspecialchars($_POST['email'])]);
+            $confirm_prompt = true;
+        }
+        echo $this->twig -> render('register.twig'); 
     }
 }

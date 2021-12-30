@@ -62,6 +62,10 @@ switch ($p) {
             $controller->login();
             break;
         }
+    case 'register' : 
+        $controller = new FrontEndController();
+        $controller->register();
+        break;
     default : 
         $controller = new FrontendController();
         $controller->http404();

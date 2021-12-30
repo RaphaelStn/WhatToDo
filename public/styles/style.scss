@@ -76,3 +76,6 @@ section {
     margin-bottom: 50px;
   }
 }
+form {
+  @include flexCenter(column);
+}
