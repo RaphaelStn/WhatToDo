@@ -189,8 +189,30 @@ nav #toggle {
   background-color: #333232;
 }
 
-.poster:hover img {
-  opacity: 0.7;
+.favorite {
+  position: relative;
+  width: 0px;
+  float: right;
+  right: 30px;
+  font-size: 30px;
+  color: #f2ba49;
+}
+
+.favorite input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.favorite .label-full {
+  display: none;
+}
+
+.favorite input[type="checkbox"]:checked + .label-full {
+  display: block !important;
+}
+
+.favorite input[type="checkbox"]:checked ~ .label-empty {
+  display: none !important;
 }
 
 .slide-active {
@@ -222,7 +244,7 @@ nav #toggle {
 }
 
 .more {
-  color: #f2ba49;
+  color: white;
   text-decoration: none;
 }
 

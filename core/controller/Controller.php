@@ -22,6 +22,8 @@ class Controller {
         $twig = new \Twig\Environment($loader, [
             'cache' => false, ROOT. '/api/templates/tmp'
         ]);
+        $twig->addGlobal('session', $_SESSION);
+        $twig->addExtension(new \Squirrel\TwigPhpSyntax\PhpSyntaxExtension());
         return $twig;
     }
 }

@@ -5,7 +5,10 @@ use Core\Table\Table;
 class UsersTable extends Table {
     
     public function getUsers() {
-        return $this-> query("SELECT username, email FROM users");
+        return $this-> query("SELECT * FROM users");
+    }
+    public function getUser($id) {
+        return $this->query("SELECT * FROM users WHERE id=?", [$id], null, true);
     }
     public function createAccount($fields) {
         $sql_parts = [];

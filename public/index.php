@@ -53,7 +53,7 @@ switch ($p) {
         $controller-> book_poster();
         break;
     case 'login' : 
-        if(isset($_SESSION['auth']) && $_SESSION['auth'] = true) {
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
             $controller = new BackendController();
             $controller->home();
             break;

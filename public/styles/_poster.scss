@@ -34,9 +34,27 @@
     }
     &:hover {
         background-color: rgb(51, 50, 50); 
-        img {
-            opacity: 0.7;
-        }
+    }
+}
+.favorite {
+    position: relative;
+    width: 0px;
+    float: right;
+    right: 30px;
+    font-size: 30px;
+    color : $main-color;
+    input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+    }
+    .label-full {
+        display: none;
+    }
+    input[type="checkbox"]:checked + .label-full {
+        display: block !important;
+    }
+    input[type="checkbox"]:checked ~ .label-empty {
+        display: none !important;
     }
 }
 .slide-active {
@@ -62,6 +80,6 @@
     right: -1px;
 }
 .more {
-    color:$main-color;
+    color:white;
     text-decoration: none;
 }

@@ -22,8 +22,15 @@ Home
     </div>
     <p class="p-main"><a href="index.php?p=show">Or maybe a show? </i></a></p>
     <div class="container-poster container-show">
-        {% for show in shows %}
+        {% for show in shows %}       
             <div class="poster">
+            <form method="post" target="frame"class="favorite">
+                <input type="hidden" name="favorite" value="unchecked">
+                <input type="checkbox" class="checkbox" name="favorite" value="checked" onChange="this.form.submit()" {% for favShow in favShows %}{% if favShow.show_id == show.id%}checked{% break %}{% endif %}{% endfor %}>
+                <label class="label-full" for="favorite"><i class="fas fa-heart"></i></label>
+                <label class="label-empty" for="favorite"><i class="far fa-heart"></i></label>
+                <input type="hidden" name="show_id" value="{{show.id}}">
+            </form>
                 <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
                 <p>{{show.name}}</p>
                 <a href="index.php?p=show_poster&id={{show.id}}" class="more">See more >></a>

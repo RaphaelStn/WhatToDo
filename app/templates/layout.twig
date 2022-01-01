@@ -23,12 +23,12 @@
         <a class="navbar-item" href="index.php?p=show">TV Shows</a>
         <a class="navbar-item" href="index.php?p=game">Games</a>
         <a class="navbar-item" href="index.php?p=book">Books</a>
-        <a class="navbar-item navbar-login" href="index.php?p=login">Login</a>
+        <a class="navbar-item navbar-login" href="index.php?p=login"> {% if session.auth == true %}Your account{% else %}Login {% endif %} </a>
     </nav>
 </header>
 
 {% block content %} {% endblock %}
-
+<iframe style='display:none;'name="frame"></iframe>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://kit.fontawesome.com/db9607f191.js" crossorigin="anonymous"></script>

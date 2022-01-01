@@ -13,6 +13,13 @@ class Books {
         this.poster = document.createElement('div');
         this.poster.className = 'poster';
         this.html.appendChild(this.poster);
+        this.likeBtn = document.createElement('div');
+		this.likeBtn.innerHTML = "<i class='far fa-heart'></i>";
+		this.likeBtn.className = "favorite";
+		this.likeBtn.addEventListener('click', _ => {
+			this.liked();
+		})
+		this.poster.appendChild(this.likeBtn);
         this.img = document.createElement('img');
         this.img.src = (books.book_image);
         this.poster.appendChild(this.img);

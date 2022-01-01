@@ -15,7 +15,7 @@ class DBAuth {
         if ($user) {
             if(hash_equals($user -> password, crypt($password, 'messier87'))) {
                 $_SESSION['auth'] = true;
-                $_SESSION['username'] = $user -> username;
+                $_SESSION['user_id'] = $user->id;
                 return true;
             }
         }
