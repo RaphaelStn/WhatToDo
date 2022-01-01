@@ -17,6 +17,13 @@ class BackendController extends FrontendController {
         }
         $user = $this->users->getUser($_SESSION['user_id']);
         $username = $user[0]->username;
-        echo $this->twig -> render('backend/home.twig',['username' => $username]);
+
+        if(isset($_SESSION['user_id'])) {
+            $favShows = $this->shows->getFav($_SESSION['user_id']);
+        }
+        else {
+            $favShows = [];
+        }
+        echo $this->twig -> render('backend/home.twig',['username' => $username, 'favShows' => $favShows]);
     }
 }

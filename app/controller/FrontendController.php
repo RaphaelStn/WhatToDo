@@ -38,14 +38,13 @@ Class FrontendController extends Controller {
                 echo 'please conenct';
             }
         }
-        //Display the favorites
+        //Display the favorites if they exist
         if(isset($_SESSION['user_id'])) {
             $favShows = $this->shows->getFav($_SESSION['user_id']);
         }
         else {
             $favShows = [];
         }
-        var_dump($favShows);
         // Rendering twig and sending datas to twig
         echo $this->twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games, 'favShows' => $favShows]);
     }
