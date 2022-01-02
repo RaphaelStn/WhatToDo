@@ -7,11 +7,42 @@ Your Account
 
 {% block content %}
 <p> Hello {{username}} </p>
-
-{% for favShow in favShows %} <p> {{favShow.show_id}} </p>{% endfor %}
 <form method="post">
     <button type"submit" name="disconnect" value="disconnect">disconnect</button>
 </form>
+<p>shows</p>
+    <div class="container-poster container-shows">
+    {% for show in favShows %}
+        <div class="poster">
+            <div class="button heart"></div>
+            <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
+            <p>{{show.name}}</p>
+            <a href="index.php?p=show_poster&id={{show.id}}" class="more">See more >></a>
+        </div>
+    {% endfor %}
+    </div>
+    <p>movies</p>
+    <div class="container-poster container-movie">
+    {% for movie in favMovies %}
+        <div class="poster">
+            <div class="button heart"></div>
+            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
+            <p>{{movie.name}}</p>
+            <a href="index.php?p=show_poster&id={{movie.id}}" class="more">See more >></a>
+        </div>
+    {% endfor %}
+    </div>    
+    <p>games</p>
+    <div class="container-poster container-game">
+    {% for game in favGames %}
+        <div class="poster">
+            <img src="{{game.background_image}}"></img>
+            <p>{{game.name}}</p>
+            <a href="index.php?p=game_poster&id={{game.id}}" class="more">See more >></a>
+        </div>
+    {% endfor %}
+    </div>
+
 {% endblock %}
 
 {% block scripts %}

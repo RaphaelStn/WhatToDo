@@ -18,12 +18,31 @@ class BackendController extends FrontendController {
         $user = $this->users->getUser($_SESSION['user_id']);
         $username = $user[0]->username;
 
-        if(isset($_SESSION['user_id'])) {
-            $favShows = $this->shows->getFav($_SESSION['user_id']);
+        $favShows = $this->loadFavorite('shows');
+        $favorites = [];
+        foreach($favShows as $favShow) {
+            $result = $this->movies->getIdShow($favShow['ids']);
+            $favorites[] = $result;
         }
-        else {
-            $favShows = [];
+        $favShows = $favorites;
+
+        $favMovies = $this->loadFavorite('movies');
+        $favorites = [];
+        foreach($favMovies as $favMovie) {
+            $result = $this->movies->getIdMovie($favMovie['ids']);
+            $favorites[] = $result;
         }
-        echo $this->twig -> render('backend/home.twig',['username' => $username, 'favShows' => $favShows]);
+        $favMovies = $favorites;
+
+        $favGames = $this->loadFavorite('games');
+        $favorites = [];
+        foreach($favGames as $favGame) {
+            $result = $this->games->getIdGame($favGame['ids']);
+            $favorites[] = $result;
+        }
+        $favGames = $favorites;
+
+
+        echo $this->twig -> render('backend/home.twig',['username' => $username, 'favShows' => $favShows, 'favMovies' => $favMovies, 'favGames' => $favGames]);
     }
 }

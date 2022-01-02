@@ -11,7 +11,6 @@ Class FrontendController extends Controller {
         $this->loadModel('movies', 'api'); 
         $this->loadModel('games', 'api');
         $this->loadModel('users', 'table');
-        $this->loadModel('shows', 'table');
         $this->twig = $this->loadTwig();
     }
     
@@ -20,33 +19,11 @@ Class FrontendController extends Controller {
         $movies = $this->movies->getTrendingMovies(); 
         $shows = $this->movies->getTrendingShows();
         $games = $this->games->getTrendingGames();
-
-        ///// Favorite logic
-        //adding to favorite a show
-        if(isset($_POST['favorite']) && $_POST['favorite'] == 'checked') {
-            if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
-                $this->shows->add($_SESSION['user_id'] ,$_POST['show_id']);
-            } else {
-                echo 'please conenct';
-            }
-        }
-        //deleting from favorite a show
-        if(isset($_POST['favorite']) && $_POST['favorite'] == 'unchecked'){
-            if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
-                $this->shows->delete($_SESSION['user_id'] ,$_POST['show_id']);
-            } else {
-                echo 'please conenct';
-            }
-        }
-        //Display the favorites if they exist
-        if(isset($_SESSION['user_id'])) {
-            $favShows = $this->shows->getFav($_SESSION['user_id']);
-        }
-        else {
-            $favShows = [];
-        }
+        $favShows = $this->loadFavorite('shows');
+        $favMovies = $this->loadFavorite('movies');
+        $favGames = $this->loadFavorite('games');
         // Rendering twig and sending datas to twig
-        echo $this->twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games, 'favShows' => $favShows]);
+        echo $this->twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games, 'favShows' => $favShows, 'favMovies' => $favMovies, 'favGames' => $favGames]);
     }
 
     public function movie() {

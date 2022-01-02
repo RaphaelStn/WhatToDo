@@ -1,0 +1,9 @@
+{% macro fav(name, name_id, favorites) %}
+<form method="post" target="frame" class="favorite">
+    <input type="hidden" name="favorite" value="unchecked">
+    <input type="checkbox" class="checkbox" name="favorite" value="checked" onChange="this.form.submit()"{% for favorite in favorites %} {% if favorite.ids == name_id %}checked {% break %} {% endif %} {% endfor %}>
+    <label class="label-full" for="favorite"><i class="fas fa-heart"></i></label>
+    <label class="label-empty" for="favorite"><i class="far fa-heart"></i></label>
+    <input type="hidden" name="{{name}}" value="{{name_id}}">
+</form>
+{% endmacro %}
