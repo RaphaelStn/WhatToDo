@@ -1,5 +1,5 @@
 {% extends 'layout.twig' %}
-
+{% import 'favorite-form.twig' as form%}
 {% block title %}
 Movies
 {% endblock %}
@@ -13,7 +13,7 @@ Movies
     <div class="container-poster container-movie">
         {% for movie in movies %}
             <div class="poster">
-                <div class="favorite"><i class="far fa-heart"></i></div>
+                {{form.fav('movie', movie.id, favMovies)}}
                 <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
                 <p>{{movie.title}}</p>
                 <a href="index.php?p=movie_poster&id={{movie.id}}" class="more">See more >></a>

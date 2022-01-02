@@ -1,5 +1,5 @@
 {% extends 'layout.twig' %}
-
+{% import 'favorite-form.twig' as form%}
 {% block title %}
 Shows
 {% endblock %}
@@ -13,7 +13,7 @@ Shows
     <div class="container-poster container-show">
         {% for show in shows %}
             <div class="poster">
-                <div class="button heart"></div>
+                {{form.fav('show', show.id, favShows)}}
                 <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
                 <p>{{show.name}}</p>
                 <a href="index.php?p=show_poster&id={{show.id}}" class="more">See more >></a>

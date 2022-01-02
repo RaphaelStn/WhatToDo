@@ -14,7 +14,7 @@ Home
     <div class="container-poster container-movie">
         {% for movie in movies %}
             <div class="poster">
-            {{form.fav('movie', movie.id, favMovies)}}
+                {{form.fav('movie', movie.id, favMovies)}}
                 <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
                 <p>{{movie.title}}</p>
                 <a href="index.php?p=movie_poster&id={{movie.id}}" class="more">See more >></a>
@@ -25,7 +25,7 @@ Home
     <div class="container-poster container-show">
         {% for show in shows %}       
             <div class="poster">
-            {{form.fav('show', show.id, favShows)}}
+                {{form.fav('show', show.id, favShows)}}
                 <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
                 <p>{{show.name}}</p>
                 <a href="index.php?p=show_poster&id={{show.id}}" class="more">See more >></a>
@@ -36,7 +36,7 @@ Home
     <div class="container-poster container-game">
         {% for game in games %}
             <div class="poster">
-            {{form.fav('game', game.id, favGames)}}
+                {{form.fav('game', game.id, favGames)}}
                 <img src="{{game.background_image}}"></img>
                 <p>{{game.name}}</p>
                 <a href="index.php?p=game_poster&id={{game.id}}" class="more">See more >></a>

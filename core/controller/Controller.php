@@ -26,11 +26,12 @@ class Controller {
         $twig->addExtension(new \Squirrel\TwigPhpSyntax\PhpSyntaxExtension());
         return $twig;
     }
+
+    //Favorite logic
     protected function loadFavorite($name) {
-        ///// Favorite logic
-        //adding to favorite a show
         $name_id = substr_replace($name ,"", -1);
-        $fav_name = 'fav'.$name;
+
+        //adding an id to the Table
         if(isset($_POST['favorite']) && $_POST['favorite'] == 'checked' && !empty($_POST[$name_id])) {
             var_dump($_POST['favorite']);
             if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
@@ -39,7 +40,8 @@ class Controller {
                 echo 'please conenct';
             }
         }
-        //deleting from favorite a show
+
+        //deleting 
         if(isset($_POST['favorite']) && $_POST['favorite'] == 'unchecked' && !empty($_POST[$name_id])) {
             if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
                 return \App::getInstance()->getTable($name)->delete($_SESSION['user_id'] ,$_POST[$name_id]);
@@ -47,12 +49,13 @@ class Controller {
                 echo 'please conenct';
             }
         }
-        //Display the favorites if they exist
+
+        //Fetch favorites and return the data
         if(isset($_SESSION['user_id'])) {
             return $fav_name= \App::getInstance()->getTable($name)->getFav($_SESSION['user_id']);
         }
         else {
-            $fav_name = [];
+            return $fav_name = [];
         }
     }
 }
