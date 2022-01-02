@@ -19,26 +19,32 @@ Class FrontendController extends Controller {
         $movies = $this->movies->getTrendingMovies(); 
         $shows = $this->movies->getTrendingShows();
         $games = $this->games->getTrendingGames();
+
+        //getting favorites
         $favShows = $this->loadFavorite('shows');
         $favMovies = $this->loadFavorite('movies');
         $favGames = $this->loadFavorite('games');
+
         // Rendering twig and sending datas to twig
         echo $this->twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games, 'favShows' => $favShows, 'favMovies' => $favMovies, 'favGames' => $favGames]);
     }
 
     public function movie() {
         $movies = $this->movies->getTrendingMovies();
-        echo $this->twig -> render('movie.twig',['movies' => $movies]);
+        $favMovies = $this->loadFavorite('movies');
+        echo $this->twig -> render('movie.twig',['movies' => $movies, 'favMovies' => $favMovies]);
     }
 
     public function show() {
         $shows = $this->movies->getTrendingShows();
-        echo $this->twig -> render('show.twig',['shows' => $shows]);
+        $favShows = $this->loadFavorite('shows');
+        echo $this->twig -> render('show.twig',['shows' => $shows, 'favShows' => $favShows]);
     }
 
     public function game() {
         $games = $this->games->getTrendingGames();
-        echo $this->twig -> render('game.twig',['games' => $games]);
+        $favGames = $this->loadFavorite('games');
+        echo $this->twig -> render('game.twig',['games' => $games, 'favGames' => $favGames]);
     }
 
     public function book() {
