@@ -1,5 +1,5 @@
 {% extends 'layout.twig' %}
-
+{% import 'favorite-form.twig' as form%}
 {% block title %}
 {{show.name}}
 {% endblock %}
@@ -12,6 +12,7 @@
     <h2>{{show.name}}</h2>
     <p>Game rating : {{show.vote_average}}/10 <i class="fas fa-star"></i></p>
     <p>Release date {{show.released_date|date("m/d/Y")}}</p>
+                    {{form.fav('show', show.id, favShows)}}
 </div>
 <a id="game-random" href="index.php?p=show_poster" class="btn-random">Dont feel like watching this?</a>
 </section>

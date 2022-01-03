@@ -66,6 +66,15 @@ switch ($p) {
         $controller = new FrontendController();
         $controller->register();
         break;
+    case 'admin' : 
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true && $_SESSION['user_id'] == '1') {
+            $controller = new BackendController();
+            $controller->admin();
+        } else {
+            $controller = new FrontendController();
+            $controller->http404();
+        }
+        break;
     default : 
         $controller = new FrontendController();
         $controller->http404();

@@ -29,22 +29,20 @@ class Controller {
 
     //Favorite logic
     protected function loadFavorite($name) {
-        $name_id = substr_replace($name ,"", -1);
 
         //adding an id to the Table
-        if(isset($_POST['favorite']) && $_POST['favorite'] == 'checked' && !empty($_POST[$name_id])) {
-            var_dump($_POST['favorite']);
+        if(isset($_POST['favorite']) && $_POST['favorite'] == 'checked' && !empty($_POST[$name])) {
             if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
-                return \App::getInstance()->getTable($name)->add($_SESSION['user_id'] , $_POST[$name_id]);
+                return \App::getInstance()->getTable('favorites')->add($_SESSION['user_id'] , $_POST[$name], $name);
             } else {
-                echo 'please conenct';
+                echo "<script>alert(\"Please connect\")</script>";
             }
         }
 
         //deleting 
-        if(isset($_POST['favorite']) && $_POST['favorite'] == 'unchecked' && !empty($_POST[$name_id])) {
+        if(isset($_POST['favorite']) && $_POST['favorite'] == 'unchecked' && !empty($_POST[$name])) {
             if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
-                return \App::getInstance()->getTable($name)->delete($_SESSION['user_id'] ,$_POST[$name_id]);
+                return \App::getInstance()->getTable('favorites')->delete($_SESSION['user_id'] ,$_POST[$name], $name);
             } else {
                 echo 'please conenct';
             }
@@ -52,7 +50,7 @@ class Controller {
 
         //Fetch favorites and return the data
         if(isset($_SESSION['user_id'])) {
-            return $fav_name= \App::getInstance()->getTable($name)->getFav($_SESSION['user_id']);
+            return $fav_name= \App::getInstance()->getTable('favorites')->getFav($_SESSION['user_id'], $name);
         }
         else {
             return $fav_name = [];

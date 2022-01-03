@@ -6,7 +6,6 @@ class BackendController extends FrontendController {
     
     public function __construct() {
         parent::__construct();
-        $this->loadModel('users', 'table');
     }
 
     public function home() {
@@ -44,5 +43,9 @@ class BackendController extends FrontendController {
 
 
         echo $this->twig -> render('backend/home.twig',['username' => $username, 'favShows' => $favShows, 'favMovies' => $favMovies, 'favGames' => $favGames]);
+    }
+
+    public function admin() {
+        echo $this->twig -> render('backend/admin.twig');
     }
 }

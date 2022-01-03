@@ -13,10 +13,11 @@ Games
     <div class="container-poster container-game">
         {% for game in games %}
             <div class="poster">
-                {{form.fav('game', game.id, favGames)}}
-                <img src="{{game.background_image}}"></img>
+                <a href="index.php?p=game_poster&id={{game.id}}" class="more">
+                    <img src="{{game.background_image}}"></img>
+                </a>
                 <p>{{game.name}}</p>
-                <a href="index.php?p=game_poster&id={{game.id}}" class="more">See more >></a>
+                {{form.fav('game', game.id, favGames)}}
             </div>
         {% endfor %}
     </div>

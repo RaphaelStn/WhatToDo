@@ -13,10 +13,11 @@ Movies
     <div class="container-poster container-movie">
         {% for movie in movies %}
             <div class="poster">
-                {{form.fav('movie', movie.id, favMovies)}}
-                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
+                <a href="index.php?p=movie_poster&id={{movie.id}}" class="more">
+                     <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
+                 </a>
                 <p>{{movie.title}}</p>
-                <a href="index.php?p=movie_poster&id={{movie.id}}" class="more">See more >></a>
+                {{form.fav('movie', movie.id, favMovies)}}
             </div>
         {% endfor %}
     </div>

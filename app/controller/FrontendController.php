@@ -8,7 +8,7 @@ Class FrontendController extends Controller {
     public function __construct(){
         parent::__construct();
         // preload different API and Database Tables via LoadModel function defined in Core/Controller
-        $this->loadModel('movies', 'api'); 
+        $this->loadModel('movies', 'api'); //movies api fetch MOVIES and SHOWS
         $this->loadModel('games', 'api');
         $this->loadModel('users', 'table');
         $this->twig = $this->loadTwig();
@@ -75,7 +75,7 @@ Class FrontendController extends Controller {
             $id = $_GET['id'];
             $movie = $this->movies->getIdMovie($id);
             //checking if ID is invalid
-            if(isset($movie['success']) && $movie['success']== false) {
+            if(isset($movie['success']) && $movie['success'] == false) {
                 echo $this->twig -> render('http404.twig');
             } else {
                 echo $this->twig -> render('movie_poster.twig',['movie' => $movie]);
@@ -100,7 +100,7 @@ Class FrontendController extends Controller {
             }
         } 
         else {
-            $show = $this->movies->getRandomMovie();
+            $show = $this->movies->getRandomShow();
             echo $this->twig -> render('show_poster.twig',['show' => $show]);
         }
     }
@@ -114,8 +114,14 @@ Class FrontendController extends Controller {
         if(!empty($_POST)){
             $auth = new DBAuth(\App::getInstance()->getdb());
             if($auth -> login($_POST['username'], $_POST['password'])) {
+                if($_SESSION['user_id'] == '1') {
+                    header('Location: index.php?p=admin'); 
+                } 
+                else {
                 header('Location: index.php?p=login');
-            }else {
+                }
+            }
+            else {
                 $errors = true;
             }
         }

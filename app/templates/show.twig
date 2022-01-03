@@ -12,11 +12,12 @@ Shows
     <p> These are some of the top rated shows, feel to watch one, or add it to your favorites.</p>
     <div class="container-poster container-show">
         {% for show in shows %}
-            <div class="poster">
-                {{form.fav('show', show.id, favShows)}}
-                <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
+          <div class="poster">
+                <a href="index.php?p=show_poster&id={{show.id}}" class="more">
+                    <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
+                </a>
                 <p>{{show.name}}</p>
-                <a href="index.php?p=show_poster&id={{show.id}}" class="more">See more >></a>
+                {{form.fav('show', show.id, favShows)}}
             </div>
         {% endfor %}
     </div>
