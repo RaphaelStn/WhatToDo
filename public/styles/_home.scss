@@ -9,10 +9,10 @@
             font-size: 3rem;
         }
         p {
-        @include posterWidth(4, 200px);
-        }
-        @include media-max(800px) {
-            width: auto;
+            @include posterWidth(4, 200px);
+            @include media-max(800px) {
+                width: auto;
+            }
         }
     }
     h3 {

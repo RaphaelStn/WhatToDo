@@ -26,8 +26,15 @@ nav {
             &:checked ~ .navbar-item {
                 display: block;
                 z-index: 4;
-                background-color: rgb(18,18,18);
+                background-color: #161B22;
                 width: 150px;
+            }
+            @for $i from 1 to 7 {
+                &:checked ~ .navbar-item:nth-of-type(#{$i}) {
+                    display: block;
+                    background-color: #161B22;
+                    width: 150px;
+                }
             }
         }
     }
@@ -60,8 +67,23 @@ nav {
 .main-logo {
     position: absolute;
     left: 0px;
-
+    top: 5px;
     img {
         width: 150px;
+    }
+}
+.title-responsive {
+    display: none;
+    @include media-max(800px) {
+        display: block;
+        color: $main-color;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        top: 30px;
+        text-align: center;
+        width: 50%;
     }
 }

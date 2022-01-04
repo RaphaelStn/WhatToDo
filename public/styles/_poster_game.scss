@@ -2,15 +2,14 @@
     @include flexAlignCenter(row);
     @include posterWidth(6, 160px);
     @include media-max(800px) {
-        @include posterWidth(3, 90px);
+        @include posterWidth(2, 150px);
     }
-    gap: 9px;
+    gap: 10px;
     overflow: hidden;
 }
 .poster-game {
     background-color: #161B22;
     border-radius: 5px;
-    border: 1px solid black;
     transition: background-color .3s;
     transition: transform .5s;
     img {

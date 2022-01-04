@@ -3,15 +3,13 @@
     @include posterWidth(4, 200px);
     @include media-max(800px) {
         @include posterWidth(3, 90px);
-        gap: 8px;
     }
-    gap: 5px;
     overflow: hidden;
+    gap: 10px;
 }
 .poster {
     background-color: #161B22;
     border-radius: 5px;
-    border: 1px solid black;
     transition: background-color .3s;
     transition: transform .5s;
     img {
@@ -55,7 +53,7 @@
 }
 .btn-right {
     position: sticky;
-    right: -1px;
+    right: 10px;
 }
 .more {
     color:white;

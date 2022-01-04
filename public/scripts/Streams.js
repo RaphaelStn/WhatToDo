@@ -29,7 +29,7 @@ class Streams {
         this.img.src = (thumbnail); 
         this.link.appendChild(this.img);
 
-        //Title of the poster
+        //Generating the title
         this.name = document.createElement('p');
         this.name.textContent =  stream.title
         this.poster.appendChild(this.name);

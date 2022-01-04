@@ -67,7 +67,37 @@ nav #toggle {
   nav #toggle:checked ~ .navbar-item {
     display: block;
     z-index: 4;
-    background-color: #121212;
+    background-color: #161B22;
+    width: 150px;
+  }
+  nav #toggle:checked ~ .navbar-item:nth-of-type(1) {
+    display: block;
+    background-color: #161B22;
+    width: 150px;
+  }
+  nav #toggle:checked ~ .navbar-item:nth-of-type(2) {
+    display: block;
+    background-color: #161B22;
+    width: 150px;
+  }
+  nav #toggle:checked ~ .navbar-item:nth-of-type(3) {
+    display: block;
+    background-color: #161B22;
+    width: 150px;
+  }
+  nav #toggle:checked ~ .navbar-item:nth-of-type(4) {
+    display: block;
+    background-color: #161B22;
+    width: 150px;
+  }
+  nav #toggle:checked ~ .navbar-item:nth-of-type(5) {
+    display: block;
+    background-color: #161B22;
+    width: 150px;
+  }
+  nav #toggle:checked ~ .navbar-item:nth-of-type(6) {
+    display: block;
+    background-color: #161B22;
     width: 150px;
   }
 }
@@ -118,10 +148,30 @@ nav #toggle {
 .main-logo {
   position: absolute;
   left: 0px;
+  top: 5px;
 }
 
 .main-logo img {
   width: 150px;
+}
+
+.title-responsive {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .title-responsive {
+    display: block;
+    color: #CB3B3B;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 30px;
+    text-align: center;
+    width: 50%;
+  }
 }
 
 .container-poster {
@@ -136,21 +186,19 @@ nav #toggle {
       -ms-flex-align: center;
           align-items: center;
   width: calc(4 * (200px + 10px));
-  gap: 5px;
   overflow: hidden;
+  gap: 10px;
 }
 
 @media screen and (max-width: 800px) {
   .container-poster {
     width: calc(3 * (90px + 10px));
-    gap: 8px;
   }
 }
 
 .poster {
   background-color: #161B22;
   border-radius: 5px;
-  border: 1px solid black;
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
   -webkit-transition: -webkit-transform .5s;
@@ -214,7 +262,7 @@ nav #toggle {
 .btn-right {
   position: -webkit-sticky;
   position: sticky;
-  right: -1px;
+  right: 10px;
 }
 
 .more {
@@ -351,20 +399,19 @@ a.btn-random:hover {
       -ms-flex-align: center;
           align-items: center;
   width: calc(6 * (160px + 10px));
-  gap: 9px;
+  gap: 10px;
   overflow: hidden;
 }
 
 @media screen and (max-width: 800px) {
   .container-game {
-    width: calc(3 * (90px + 10px));
+    width: calc(2 * (150px + 10px));
   }
 }
 
 .poster-game {
   background-color: #161B22;
   border-radius: 5px;
-  border: 1px solid black;
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
   -webkit-transition: -webkit-transform .5s;
@@ -446,7 +493,7 @@ a.btn-random:hover {
 }
 
 @media screen and (max-width: 800px) {
-  #TV .title {
+  #TV .title p {
     width: auto;
   }
 }

@@ -29,6 +29,7 @@ class Slider {
 		});
 		this.slider.appendChild(this.prevBtn);
 	}
+	
 	//logic for navigation, using total div width in relation of image width, without forgetting the gap between each img to prevent overflowing
 	nextSlide() {
 		if(this.index < this.slideLength - (this.containerWidth/this.imgWidth - 1)) {

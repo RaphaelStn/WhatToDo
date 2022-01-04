@@ -4,17 +4,19 @@ use \Core\Api\Api;
 
 class MoviesApi extends Api {
 
+        //get trending movies via getCurl model in Core/Api/Api.php and return 10 results
     public function getTrendingMovies() {
-        // getCurl function logic defined in Core/Api, faster use of API's URL
         $this->data = $this->getCurl('https://api.themoviedb.org/3/trending/movie/week?api_key=' . $this-> key_movie . '');
         return array_slice($this->data, 0, 10);
     }
 
+    //get trending shows via getCurl model in Core/Api/Api.php and return 10 results
     public function getTrendingShows() {
         $this->data = $this ->getCurl('https://api.themoviedb.org/3/trending/tv/week?api_key=' . $this-> key_movie . '');
         return array_slice($this->data, 0, 10);
     }
 
+    //Get a random movie via getCurl Model in Core/Api/Api.php
     public function getRandomMovie() {
         $data =[];
         $tempData = [];
@@ -27,6 +29,7 @@ class MoviesApi extends Api {
         return $this->data[$this->rand_keys];
     }
     
+    //Get a random show via getCurl Model in Core/Api/Api.php
     public function getRandomShow() {
         $data =[];
         $tempData = [];
@@ -39,11 +42,13 @@ class MoviesApi extends Api {
         return $this->data[$this->rand_keys];
     }
 
+    //Search a movie with his unique ID.
     public function getIdMovie($id) {
         $this->data = $this ->getCurl('https://api.themoviedb.org/3/movie/'. $id .'?api_key=' . $this-> key_movie . '&language=en-US', true);
         return $this->data;
     }
 
+    //Search a shows with his unique ID.
     public function getIdShow($id) {
         $this->data = $this ->getCurl('https://api.themoviedb.org/3/tv/'. $id .'?api_key=' . $this-> key_movie . '&language=en-US', true);
         return $this->data;

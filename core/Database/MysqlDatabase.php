@@ -2,7 +2,7 @@
 namespace Core\Database;
 use \PDO;
 
-class MysqlDatabase { // Recupération des datas selon les infos constructeurs (ici config), et renvoie $data, fin du chemin.
+class MysqlDatabase {
 
     private $db_name;
     private $db_user;

@@ -18,7 +18,7 @@ class Config{
         $this -> settings = require ($file);
     }
 
-    // return API keys
+    // return API and Table keys
     public function get($key) {
         if(!isset($this -> settings[$key])) {
             return null;

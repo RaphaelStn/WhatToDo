@@ -8,43 +8,28 @@ class BackendController extends FrontendController {
         parent::__construct();
     }
 
+    //Controller for Home page BACKEND
     public function home() {
+        //Btn Disconnect to kill session
         if(isset($_POST['disconnect'])) {
             unset($_SESSION['auth']);
             unset($_SESSION['user_id']);
             header('location:index.php');
         }
+        //Get Username of the account
         $user = $this->users->getUser($_SESSION['user_id']);
         $username = $user[0]->username;
 
-        $favShows = $this->loadFavorite('shows');
-        $favorites = [];
-        foreach($favShows as $favShow) {
-            $result = $this->movies->getIdShow($favShow['ids']);
-            $favorites[] = $result;
-        }
-        $favShows = $favorites;
+        //Get different Favorites
+        $favShows = $this->getDataFavorites('shows');
+        $favMovies = $this->getDataFavorites('movies');
+        $favGames = $this->getDataFavorites('games');
 
-        $favMovies = $this->loadFavorite('movies');
-        $favorites = [];
-        foreach($favMovies as $favMovie) {
-            $result = $this->movies->getIdMovie($favMovie['ids']);
-            $favorites[] = $result;
-        }
-        $favMovies = $favorites;
-
-        $favGames = $this->loadFavorite('games');
-        $favorites = [];
-        foreach($favGames as $favGame) {
-            $result = $this->games->getIdGame($favGame['ids']);
-            $favorites[] = $result;
-        }
-        $favGames = $favorites;
-
-
+        //Twig render
         echo $this->twig -> render('backend/home.twig',['username' => $username, 'favShows' => $favShows, 'favMovies' => $favMovies, 'favGames' => $favGames]);
     }
 
+    //Controller for Admin Page
     public function admin() {
         echo $this->twig -> render('backend/admin.twig');
     }

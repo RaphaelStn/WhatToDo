@@ -8,23 +8,25 @@ Class FrontendController extends Controller {
     public function __construct(){
         parent::__construct();
         // preload different API and Database Tables via LoadModel function defined in Core/Controller
-        $this->loadModel('movies', 'api'); //movies api fetch MOVIES and SHOWS
+        $this->loadModel('movies', 'api');
         $this->loadModel('games', 'api');
         $this->loadModel('users', 'table');
+        //Twig Loader
         $this->twig = $this->loadTwig();
     }
     
+    //Controller for Home page
     public function home() {
         // Fetching trending movie via function defined in the models API (ie: moviesApi here)
         $movies = $this->movies->getTrendingMovies(); 
         $shows = $this->movies->getTrendingShows();
         $games = $this->games->getTrendingGames();
 
-        //getting favorites
-        $favShows = $this->loadFavorite('shows');
-        $favMovies = $this->loadFavorite('movies');
-        $favGames = $this->loadFavorite('games');
-        $favStreams = $this->loadFavorite('streams');
+        //Loading differents models for Favorite logic (add, delete, display)
+        $favShows = $this->modelFavorite('shows');
+        $favMovies = $this->modelFavorite('movies');
+        $favGames = $this->modelFavorite('games');
+        $favStreams = $this->modelFavorite('streams');
 
         // Rendering twig and sending datas to twig
         echo $this->twig -> render('home.twig',[
@@ -38,8 +40,9 @@ Class FrontendController extends Controller {
         ]);
     }
     
+    //Controller for Game Poster
     public function game_poster() {
-        $favGames = $this->loadFavorite('games');
+        $favGames = $this->modelFavorite('games');
         //if id is set in GET method, display specific game, else display random
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -57,8 +60,10 @@ Class FrontendController extends Controller {
         }
 
     }
+
+    //Controller for Movie Poster
     public function movie_poster() {
-        $favMovies = $this->loadFavorite('movies');
+        $favMovies = $this->modelFavorite('movies');
         //if id is set in GET method, display specific movie, else display random
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -76,8 +81,9 @@ Class FrontendController extends Controller {
         }
     }
 
+    //Controller for Show Poster
     public function show_poster() {
-        $favShows = $this->loadFavorite('shows');
+        $favShows = $this->modelFavorite('shows');
         //if id is set in GET method, display specific show, else display random
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -94,14 +100,11 @@ Class FrontendController extends Controller {
             echo $this->twig -> render('show_poster.twig',['show' => $show, 'favShows' => $favShows]);
         }
     }
-    public function stream_poster() {
-        $favStreams = $this->loadFavorite('streams');
-        echo $this->twig -> render('stream_poster.twig', ['favStreams' => $favStreams]);
-    }
-    
-    
+
+    //Controller for Login page
     public function login() {
         $errors = false;
+        //When POST, check if login() returns true, if true, connects, else return $errors
         if(!empty($_POST)){
             $auth = new DBAuth(\App::getInstance()->getdb());
             if($auth -> login($_POST['username'], $_POST['password'])) {
@@ -119,21 +122,23 @@ Class FrontendController extends Controller {
         echo $this->twig -> render('login.twig', ['errors' => $errors]);
     }
 
-    
+    //Controller for registration page
     public function register() {
         $errors = [];
         $account_created = false;
         $account_exist = false;
+        //If every input if !empty
         if(isset($_POST['create-account']) && !empty($_POST['username']) && !empty($_POST['password']) &&  !empty($_POST['email'])) {
             //Username verification to prevent multiple account with same name account 
             $users = $this->users->getUsers();
             foreach($users as $user) {
-                //if username or email already in use, stop the foreach loop
+                //if username already in use, stop the foreach loop
                 if($user->username == $_POST['username']) {
                     $account_exist = true;
                     break;
                 }
             }
+            //If the account username isn't taken, create the account
             if ($account_exist == false) {
                 $this->users->createAccount(['username' => htmlspecialchars($_POST['username']), 'password' => crypt(htmlspecialchars($_POST['password']), 'messier87'), 'email' => htmlspecialchars($_POST['email'])]);
                 $account_created = true;
@@ -155,6 +160,7 @@ Class FrontendController extends Controller {
         echo $this->twig -> render('register.twig', ['errors' => $errors, 'account_created' => $account_created]); 
     }
 
+    //Controller default 404
     public function http404() {
         echo $this->twig -> render('http404.twig'); 
     }

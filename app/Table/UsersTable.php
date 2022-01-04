@@ -10,6 +10,8 @@ class UsersTable extends Table {
     public function getUser($id) {
         return $this->query("SELECT * FROM users WHERE id=?", [$id], null, true);
     }
+
+    //Account creation, using implode to extract the different Attributes to send
     public function createAccount($fields) {
         $sql_parts = [];
         $attributes = [];

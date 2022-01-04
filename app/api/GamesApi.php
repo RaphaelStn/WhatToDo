@@ -4,16 +4,14 @@ use \Core\Api\Api;
 
 class GamesApi extends Api {
 
-    private $rand_keys;
-
-
+    //get Top rated videos games via getCurl model in Core/Api/Api.php and shuffle the data, return 20 results
     public function getTrendingGames() {
-        // getCurl function logic defined in Core/Api, faster use of API's URL
         $this->data = $this->getCurl('https://api.rawg.io/api/games?key=' . $this-> key_game . '&metacritic=80,100'); 
         shuffle($this->data);
         return array_slice($this->data, 0, 20);
     }
     
+    //Get a random game via getCurl Model in Core/Api/Api.php
     public function getRandomGame() {
         $data =[];
         $tempData = [];
@@ -26,6 +24,7 @@ class GamesApi extends Api {
         return $this->data[$this->rand_keys];
     }
 
+    //Search a game with his unique ID.
     public function getIdGame($id) {
         $this->data = $this->getCurl('https://api.rawg.io/api/games/'. $id .'?key=' . $this-> key_game . '', true); 
         return $this->data;
