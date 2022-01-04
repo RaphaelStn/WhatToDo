@@ -9,7 +9,7 @@ Home
 
 <section id="TV">
     <div class="title">
-        <h1> WhatToDo </h1>
+        <h1> What To Do </h1>
         <h2> Let us choose for you.</h2>
         <p> Want to play a game? Maybe watch a trending movie, or you could also pick at random a movie, a show or a game.
         To add something to your favorite, you need to register an account. Once connected you will find your favorites on your account page.</p>
@@ -42,7 +42,7 @@ Home
     <a href="index.php?p=show_poster" class="btn-random">Pick me a TV Show</a>
 </section>
 <section id = "game">
-    <h3 class="p-main"><a href="index.php?p=game_poster">Top rated games of all time <i class="fas fa-chevron-down"></i></a></h3>
+    <h3>Top rated games of all time <i class="fas fa-chevron-down"></i></h3>
     <div class="container-game">
         {% for game in games %}
             <div class="poster-game">
@@ -54,6 +54,7 @@ Home
             </div>
         {% endfor %}
     </div>
+    <a href="index.php?p=game_poster" class="btn-random">Pick me a movie</a>
 </section>
 <section id="twitch">
     <p>Finally, you can just chill on Twitch watching a stream, here are the top streamers live right know</p>

@@ -11,15 +11,17 @@
         p {
         @include posterWidth(4, 200px);
         }
+        @include media-max(800px) {
+            width: auto;
+        }
     }
     h3 {
-      @include posterWidth(4, 200px);
-      margin-top: 10px;
-      color: white;
-      }
-      @include media-max(800px) {
-        @include posterWidth(3, 90px);
-      }
+        @include posterWidth(4, 200px);
+        color: $main-color;
+        @include media-max(800px) {
+            width: auto;
+        }
+    }
   }
 
 // Section Gaming of the homepage
@@ -27,18 +29,15 @@
     @include flexCenter(column);
     h3 {
         font-size: 1.5rem;
-        a {
-            text-decoration: none;
-            color: $main-color;   
-        }
+        color: $main-color;
     }
-    @include media-max(800px) {
-        @include posterWidth(3, 90px);
-        }
 }
 #twitch {
     @include flexCenter(column);
     p {
-        @include posterWidth(3,250px)
+        @include posterWidth(3,250px);
+        @include media-max(800px) {
+            width: auto;
+        }
     }
 }

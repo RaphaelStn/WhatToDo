@@ -33,7 +33,7 @@ class Slider {
 	nextSlide() {
 		if(this.index < this.slideLength - (this.containerWidth/this.imgWidth - 1)) {
 			for (let slide of this.slides.slice(0, -2)) {
-				this.value = this.index * -(this.imgWidth+15);
+				this.value = this.index * -(this.imgWidth+10);
 				slide.style.transform = `translate(${this.value}px, 0)`
 			};
 			this.index++;
@@ -42,7 +42,7 @@ class Slider {
 	prevSlide() {
 		if(this.index>1) {
 			for (let slide of this.slides.slice(0, -2)) {
-				this.value = (this.index * -(this.imgWidth+15)) + 2*(this.imgWidth+15);
+				this.value = (this.index * -(this.imgWidth+10)) + 2*(this.imgWidth+10);
 				slide.style.transform = `translate(${this.value}px, 0)`
 			};
 			this.index--;

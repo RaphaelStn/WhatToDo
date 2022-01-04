@@ -94,8 +94,8 @@ nav #toggle {
 }
 
 .navbar-item:hover {
-  color: #f2ba49;
-  border-bottom: solid #f2ba49;
+  color: #CB3B3B;
+  border-bottom: solid #CB3B3B;
 }
 
 @media screen and (max-width: 800px) {
@@ -136,13 +136,14 @@ nav #toggle {
       -ms-flex-align: center;
           align-items: center;
   width: calc(4 * (200px + 10px));
-  gap: 9px;
+  gap: 5px;
   overflow: hidden;
 }
 
 @media screen and (max-width: 800px) {
   .container-poster {
     width: calc(3 * (90px + 10px));
+    gap: 8px;
   }
 }
 
@@ -188,39 +189,6 @@ nav #toggle {
   background-color: #333232;
 }
 
-.favorite {
-  position: relative;
-  width: 0px;
-  float: right;
-  right: 30px;
-  font-size: 30px;
-  color: #f2ba49;
-}
-
-.favorite input[type="checkbox"] {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  opacity: 0;
-}
-
-.favorite input[type="checkbox"]:active {
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
-}
-
-.favorite .label-full {
-  display: none;
-}
-
-.favorite input[type="checkbox"]:checked + .label-full {
-  display: block !important;
-}
-
-.favorite input[type="checkbox"]:checked ~ .label-empty {
-  display: none !important;
-}
-
 .slide-active {
   -webkit-transform: translateX(-160px);
           transform: translateX(-160px);
@@ -234,7 +202,7 @@ nav #toggle {
   border-radius: 2px;
   cursor: pointer;
   text-align: center;
-  color: #f2ba49;
+  color: #CB3B3B;
   z-index: 3;
   padding-top: 20px;
 }
@@ -254,24 +222,64 @@ nav #toggle {
   text-decoration: none;
 }
 
+.heart {
+  position: absolute;
+  top: -30px;
+  width: 85px;
+  height: 85px;
+  background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  -webkit-transition: background-position 1s steps(28);
+  transition: background-position 1s steps(28);
+  -webkit-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+.heart.is-active {
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  background-position: -2800px 0;
+}
+
+.heart.is-loaded {
+  background-position: -2800px 0;
+}
+
+.favorite {
+  position: relative;
+  width: 0px;
+  float: right;
+  right: 30px;
+  font-size: 30px;
+  color: #CB3B3B;
+}
+
+.favorite input[type="checkbox"] {
+  width: 85px;
+  height: 85px;
+  position: absolute;
+  opacity: 0;
+}
+
 a.btn-random {
   display: inline-block;
   padding: 0.35em 1.2em;
-  border: 0.1em solid #f2ba49;
+  border: 0.1em solid #CB3B3B;
   margin: 10px;
   border-radius: 0.12em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
-  color: #f2ba49;
+  color: #CB3B3B;
   text-align: center;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
 
 a.btn-random:hover {
-  color: #000000;
-  background-color: #f2ba49;
+  color: #fff;
+  background-color: #CB3B3B;
 }
 
 .random {
@@ -374,8 +382,8 @@ a.btn-random:hover {
 
 @media screen and (max-width: 800px) {
   .poster-game img {
-    width: 90px;
-    height: 150px;
+    width: 150px;
+    height: 90px;
   }
 }
 
@@ -393,72 +401,6 @@ a.btn-random:hover {
 
 .poster-game:hover {
   background-color: #333232;
-}
-
-.favorite {
-  position: relative;
-  width: 0px;
-  float: right;
-  right: 30px;
-  font-size: 30px;
-  color: #f2ba49;
-}
-
-.favorite input[type="checkbox"] {
-  width: 30px;
-  height: 30px;
-  position: absolute;
-  opacity: 0;
-}
-
-.favorite input[type="checkbox"]:active {
-  -webkit-transform: translateY(4px);
-          transform: translateY(4px);
-}
-
-.favorite .label-full {
-  display: none;
-}
-
-.favorite input[type="checkbox"]:checked + .label-full {
-  display: block !important;
-}
-
-.favorite input[type="checkbox"]:checked ~ .label-empty {
-  display: none !important;
-}
-
-.slide-active {
-  -webkit-transform: translateX(-160px);
-          transform: translateX(-160px);
-  opacity: 1;
-}
-
-.btn-poster {
-  min-width: 40px;
-  height: 40px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 2px;
-  cursor: pointer;
-  text-align: center;
-  color: #f2ba49;
-  z-index: 3;
-  padding-top: 20px;
-}
-
-.btn-left {
-  position: absolute;
-}
-
-.btn-right {
-  position: -webkit-sticky;
-  position: sticky;
-  right: -1px;
-}
-
-.more {
-  color: white;
-  text-decoration: none;
 }
 
 #TV {
@@ -495,7 +437,7 @@ a.btn-random:hover {
 }
 
 #TV .title h1 {
-  color: #f2ba49;
+  color: #CB3B3B;
   font-size: 3rem;
 }
 
@@ -503,15 +445,20 @@ a.btn-random:hover {
   width: calc(4 * (200px + 10px));
 }
 
+@media screen and (max-width: 800px) {
+  #TV .title {
+    width: auto;
+  }
+}
+
 #TV h3 {
   width: calc(4 * (200px + 10px));
-  margin-top: 10px;
-  color: white;
+  color: #CB3B3B;
 }
 
 @media screen and (max-width: 800px) {
-  #TV {
-    width: calc(3 * (90px + 10px));
+  #TV h3 {
+    width: auto;
   }
 }
 
@@ -533,17 +480,7 @@ a.btn-random:hover {
 
 #game h3 {
   font-size: 1.5rem;
-}
-
-#game h3 a {
-  text-decoration: none;
-  color: #f2ba49;
-}
-
-@media screen and (max-width: 800px) {
-  #game {
-    width: calc(3 * (90px + 10px));
-  }
+  color: #CB3B3B;
 }
 
 #twitch {
@@ -564,6 +501,12 @@ a.btn-random:hover {
 
 #twitch p {
   width: calc(3 * (250px + 10px));
+}
+
+@media screen and (max-width: 800px) {
+  #twitch p {
+    width: auto;
+  }
 }
 
 body {
@@ -604,7 +547,7 @@ section {
 }
 
 .single-poster h2 {
-  color: #f2ba49;
+  color: #CB3B3B;
   margin-bottom: 50px;
 }
 

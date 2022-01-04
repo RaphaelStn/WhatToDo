@@ -28,7 +28,6 @@ class Controller {
 
     //Favorite logic
     protected function loadFavorite($name) {
-
         //adding an id to the Table
         if(isset($_POST['favorite']) && $_POST['favorite'] == 'checked' && !empty($_POST[$name])) {
             if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {

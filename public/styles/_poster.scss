@@ -3,8 +3,9 @@
     @include posterWidth(4, 200px);
     @include media-max(800px) {
         @include posterWidth(3, 90px);
+        gap: 8px;
     }
-    gap: 9px;
+    gap: 5px;
     overflow: hidden;
 }
 .poster {
@@ -34,38 +35,12 @@
         background-color: rgb(51, 50, 50); 
     }
 }
-.favorite {
-    position: relative;
-    width: 0px;
-    float: right;
-    right: 30px;
-    font-size: 30px;
-    color : $main-color;
-    input[type="checkbox"] {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        opacity: 0;
-        &:active {
-            transform: translateY(4px);
-        }
-    }
-    .label-full {
-        display: none;
-    }
-    input[type="checkbox"]:checked + .label-full {
-        display: block !important;
-    }
-    input[type="checkbox"]:checked ~ .label-empty {
-        display: none !important;
-    }
-}
 .slide-active {
     transform: translateX(-160px);
     opacity: 1;
 }
 .btn-poster {
-	min-width: 40px;
+    min-width: 40px;
 	height: 40px;
 	background-color: rgba(0,0,0,0.6);
 	border-radius: 2px;
@@ -85,4 +60,39 @@
 .more {
     color:white;
     text-decoration: none;
+}
+
+.heart {
+    position: absolute;
+    top: -30px;
+    width: 85px;
+    height: 85px;
+    background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
+    background-position: 0 0;
+    cursor: pointer;
+    transition: background-position 1s steps(28);
+    transition-duration: 0s;
+    
+    &.is-active {
+        transition-duration: 1s;
+        background-position: -2800px 0;
+    }
+    &.is-loaded {
+        background-position: -2800px 0;
+    }
+}
+.favorite {
+    position: relative;
+    width: 0px;
+    float: right;
+    right: 30px;
+    font-size: 30px;
+    color : $main-color;
+    input[type="checkbox"] {
+        width: 85px;
+        height: 85px;
+        position: absolute;
+        opacity: 0;
+    }
+
 }
