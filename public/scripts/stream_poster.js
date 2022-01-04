@@ -1,3 +1,4 @@
+//Getting the user_id that is connected
 window.$_GET = new URLSearchParams(location.search);
 var id = $_GET.get('id');
 
