@@ -1,0 +1,44 @@
+//Section TV of the homepage
+#TV {
+    @include flexCenter(column);
+    .title {
+        @include flexCenter(column);
+        margin-bottom: 50px;
+        h1 {
+            color: $main-color;
+            font-size: 3rem;
+        }
+        p {
+        @include posterWidth(4, 200px);
+        }
+    }
+    h3 {
+      @include posterWidth(4, 200px);
+      margin-top: 10px;
+      color: white;
+      }
+      @include media-max(800px) {
+        @include posterWidth(3, 90px);
+      }
+  }
+
+// Section Gaming of the homepage
+#game {
+    @include flexCenter(column);
+    h3 {
+        font-size: 1.5rem;
+        a {
+            text-decoration: none;
+            color: $main-color;   
+        }
+    }
+    @include media-max(800px) {
+        @include posterWidth(3, 90px);
+        }
+}
+#twitch {
+    @include flexCenter(column);
+    p {
+        @include posterWidth(3,250px)
+    }
+}

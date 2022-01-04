@@ -27,19 +27,23 @@ $main-color: #f2ba49;
 // import
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
 @import "./nav";
 @import "./poster";
 @import "./button";
 @import "./bigPoster";
+@import "./poster_game";
+@import "./home";
 
 // General rules
 
 body {
   margin: 0;
-  background-color: black;
+  background-color: #0D1117;
   color: white;
   font-family: "Roboto", sans-serif;
 }
+
 h1,
 h2,
 h3,
@@ -47,28 +51,13 @@ h4,
 h5,
 h6 {
   margin: 4px;
+  font-family: 'Rajdhani', sans-serif;
 }
 section {
   margin-top:50px;
 }
-#home {
-  @include flexCenter(column);
-  h1 {
-    color: $main-color;
-    margin-bottom: 50px;
-  }
-  .p-main {
-    @include posterWidth(5, 150px);
-    margin-top: 10px;
-    a {
-      text-decoration: none;
-      color: white;
-    }
-    @include media-max(800px) {
-      @include posterWidth(3, 90px);
-    }
-  }
-}
+
+
 .single-poster {
   @include flexCenter(column);
   h2 {

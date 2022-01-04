@@ -20,22 +20,6 @@ switch ($p) {
         $controller = new FrontendController();
         $controller->home();
         break;
-    case 'movie' : 
-        $controller = new FrontendController();
-        $controller->movie();
-        break;
-    case 'show' : 
-        $controller = new FrontendController();
-        $controller->show();
-        break;
-    case 'game' : 
-        $controller = new FrontendController();
-        $controller->game();
-        break;
-    case 'book' : 
-        $controller = new FrontendController();
-        $controller->book();
-        break;
     case 'game_poster' :
         $controller = new FrontendController();
         $controller-> game_poster();
@@ -48,9 +32,9 @@ switch ($p) {
         $controller = new FrontendController();
         $controller-> show_poster();
         break;
-    case 'book_poster' :
+    case 'stream_poster' :
         $controller = new FrontendController();
-        $controller-> book_poster();
+        $controller-> stream_poster();
         break;
     case 'login' : 
         if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {

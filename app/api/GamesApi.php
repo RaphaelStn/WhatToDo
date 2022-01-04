@@ -10,7 +10,8 @@ class GamesApi extends Api {
     public function getTrendingGames() {
         // getCurl function logic defined in Core/Api, faster use of API's URL
         $this->data = $this->getCurl('https://api.rawg.io/api/games?key=' . $this-> key_game . '&metacritic=80,100'); 
-        return array_slice($this->data, 0, 10);
+        shuffle($this->data);
+        return array_slice($this->data, 0, 20);
     }
     
     public function getRandomGame() {

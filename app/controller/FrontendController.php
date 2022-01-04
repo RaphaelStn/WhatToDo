@@ -24,34 +24,22 @@ Class FrontendController extends Controller {
         $favShows = $this->loadFavorite('shows');
         $favMovies = $this->loadFavorite('movies');
         $favGames = $this->loadFavorite('games');
+        $favStreams = $this->loadFavorite('streams');
 
         // Rendering twig and sending datas to twig
-        echo $this->twig -> render('home.twig',['movies' => $movies,'shows' => $shows, 'games' => $games, 'favShows' => $favShows, 'favMovies' => $favMovies, 'favGames' => $favGames]);
+        echo $this->twig -> render('home.twig',[
+            'movies' => $movies,
+            'shows' => $shows,
+            'games' => $games, 
+            'favShows' => $favShows,
+            'favMovies' => $favMovies,
+            'favGames' => $favGames,
+            'favStreams' => $favStreams,
+        ]);
     }
-
-    public function movie() {
-        $movies = $this->movies->getTrendingMovies();
-        $favMovies = $this->loadFavorite('movies');
-        echo $this->twig -> render('movie.twig',['movies' => $movies, 'favMovies' => $favMovies]);
-    }
-
-    public function show() {
-        $shows = $this->movies->getTrendingShows();
-        $favShows = $this->loadFavorite('shows');
-        echo $this->twig -> render('show.twig',['shows' => $shows, 'favShows' => $favShows]);
-    }
-
-    public function game() {
-        $games = $this->games->getTrendingGames();
-        $favGames = $this->loadFavorite('games');
-        echo $this->twig -> render('game.twig',['games' => $games, 'favGames' => $favGames]);
-    }
-
-    public function book() {
-        echo $this->twig -> render('book.twig');
-    }
-
+    
     public function game_poster() {
+        $favGames = $this->loadFavorite('games');
         //if id is set in GET method, display specific game, else display random
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -60,16 +48,17 @@ Class FrontendController extends Controller {
             if(isset($game['detail']) && $game['detail'] == "Not found.") {
                 echo $this->twig -> render('http404.twig');
             } else {
-                echo $this->twig -> render('game_poster.twig',['game' => $game]);
+                echo $this->twig -> render('game_poster.twig',['game' => $game, 'favGames' => $favGames]);
             }
         } 
         else {
             $game = $this->games->getRandomGame();
-            echo $this->twig -> render('game_poster.twig',['game' => $game]);
+            echo $this->twig -> render('game_poster.twig',['game' => $game, 'favGames' => $favGames]);
         }
 
     }
     public function movie_poster() {
+        $favMovies = $this->loadFavorite('movies');
         //if id is set in GET method, display specific movie, else display random
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -78,16 +67,17 @@ Class FrontendController extends Controller {
             if(isset($movie['success']) && $movie['success'] == false) {
                 echo $this->twig -> render('http404.twig');
             } else {
-                echo $this->twig -> render('movie_poster.twig',['movie' => $movie]);
+                echo $this->twig -> render('movie_poster.twig',['movie' => $movie, 'favMovies' => $favMovies]);
             }
         } 
         else {
             $movie = $this->movies->getRandomMovie();
-            echo $this->twig -> render('movie_poster.twig',['movie' => $movie]);
+            echo $this->twig -> render('movie_poster.twig',['movie' => $movie, 'favMovies' => $favMovies]);
         }
     }
 
     public function show_poster() {
+        $favShows = $this->loadFavorite('shows');
         //if id is set in GET method, display specific show, else display random
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -96,16 +86,17 @@ Class FrontendController extends Controller {
             if(isset($show['success']) && $show['success']== false) {
                 echo $this->twig -> render('http404.twig');
             } else {
-                echo $this->twig -> render('show_poster.twig',['show' => $show]);
+                echo $this->twig -> render('show_poster.twig',['show' => $show, 'favShows' => $favShows]);
             }
         } 
         else {
             $show = $this->movies->getRandomShow();
-            echo $this->twig -> render('show_poster.twig',['show' => $show]);
+            echo $this->twig -> render('show_poster.twig',['show' => $show, 'favShows' => $favShows]);
         }
     }
-    public function book_poster() {
-        echo $this->twig -> render('book_poster.twig');
+    public function stream_poster() {
+        $favStreams = $this->loadFavorite('streams');
+        echo $this->twig -> render('stream_poster.twig', ['favStreams' => $favStreams]);
     }
     
     

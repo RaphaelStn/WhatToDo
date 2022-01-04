@@ -16,7 +16,7 @@
     {% for genre in game.genres %}
         {{ genre.name }}
     {% endfor %}
-    {{form.fav('game', game.id, favGames)}}
+    {{form.fav('games', game.id, favGames)}}
 </div>
 <a id="game-random" href="index.php?p=game_poster" class="btn-random">Dont feel like playing this?</a>
 </section>

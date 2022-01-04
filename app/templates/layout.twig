@@ -19,10 +19,9 @@
         <input type="checkbox" id="toggle">
         <a class="main-logo" href="index.php?p=home"><img src="img/logo.png"/></a>
         <a class="navbar-item" href="index.php?p=home">Home</a>
-        <a class="navbar-item" href="index.php?p=movie">Movies</a>
-        <a class="navbar-item" href="index.php?p=show">TV Shows</a>
-        <a class="navbar-item" href="index.php?p=game">Games</a>
-        <a class="navbar-item" href="index.php?p=book">Books</a>
+        <a class="navbar-item" href="index.php?p=movie_poster">Movies</a>
+        <a class="navbar-item" href="index.php?p=show_poster">TV Shows</a>
+        <a class="navbar-item" href="index.php?p=game_poster">Games</a>
         <a class="navbar-item navbar-login" href="index.php?p=login"> {% if session.auth == true %}Your account{% else %}Login {% endif %} </a>
     </nav>
 </header>
@@ -34,9 +33,9 @@
 <script src="https://kit.fontawesome.com/db9607f191.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
 <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-<script src="scripts/books.js"></script>
-<script src="scripts/booksApi.js"></script>
-<script src="scripts/slider.js"></script>
+<script src="scripts/Api.js"></script>
+<script src="scripts/Streams.js"></script>
+<script src="scripts/Slider.js"></script>
 <script src="scripts/index.js"></script>
 {% block scripts %}{% endblock %}
 
