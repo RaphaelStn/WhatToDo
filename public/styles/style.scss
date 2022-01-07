@@ -30,10 +30,11 @@ $main-color: #CB3B3B;
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
 @import "./nav";
 @import "./poster";
+@import "./poster-xl";
 @import "./button";
-@import "./bigPoster";
-@import "./poster_game";
 @import "./home";
+@import "./form";
+@import "./account";
 
 // General rules
 
@@ -57,14 +58,15 @@ section {
   margin-top:50px;
 }
 
-
-.single-poster {
-  @include flexCenter(column);
-  h2 {
-    color: $main-color;
-    margin-bottom: 50px;
-  }
+.link {
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  color: $main-color;
+  font-weight: bolder;
 }
-form {
-  @include flexCenter(column);
+#login {
+  @include flexAlignCenter(column);
+  p {
+    margin: 3px;
+}
 }

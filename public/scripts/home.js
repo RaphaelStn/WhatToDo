@@ -1,8 +1,8 @@
 let streams = new Api();
 let getStreams = streams.initApi('https://api.twitch.tv/helix/streams?sort=views&language=en').then((dataStreams) => {
-    let streamHTML = document.querySelector('.container-stream');
-    let getTop = new Streams(streamHTML);
-    getTop.initTrending(dataStreams);
+    let streamHTML = document.querySelector('.twitch-videos');
+    let initStreams = new Streams(streamHTML);
+    initStreams.initStreams(dataStreams);
 });
 
 //Creating the other sliders

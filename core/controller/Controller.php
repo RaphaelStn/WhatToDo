@@ -32,7 +32,7 @@ class Controller {
         //adding an id to the Table
         if(isset($_POST['favorite']) && $_POST['favorite'] == 'checked' && !empty($_POST[$name])) {
             if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
-                return \App::getInstance()->getTable('favorites')->add($_SESSION['user_id'] , $_POST[$name], $name);
+                \App::getInstance()->getTable('favorites')->add($_SESSION['user_id'] , $_POST[$name], $name);
             } else {
                 echo "<script>alert(\"Please connect\")</script>";
             }
@@ -41,7 +41,7 @@ class Controller {
         //deleting 
         if(isset($_POST['favorite']) && $_POST['favorite'] == 'unchecked' && !empty($_POST[$name])) {
             if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
-                return \App::getInstance()->getTable('favorites')->delete($_SESSION['user_id'] ,$_POST[$name], $name);
+                \App::getInstance()->getTable('favorites')->delete($_SESSION['user_id'] ,$_POST[$name], $name);
             } else {
                 echo 'please conenct';
             }

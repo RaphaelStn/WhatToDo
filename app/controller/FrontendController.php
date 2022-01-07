@@ -26,7 +26,6 @@ Class FrontendController extends Controller {
         $favShows = $this->modelFavorite('shows');
         $favMovies = $this->modelFavorite('movies');
         $favGames = $this->modelFavorite('games');
-        $favStreams = $this->modelFavorite('streams');
 
         // Rendering twig and sending datas to twig
         echo $this->twig -> render('home.twig',[
@@ -36,12 +35,11 @@ Class FrontendController extends Controller {
             'favShows' => $favShows,
             'favMovies' => $favMovies,
             'favGames' => $favGames,
-            'favStreams' => $favStreams,
         ]);
     }
     
     //Controller for Game Poster
-    public function game_poster() {
+    public function game() {
         $favGames = $this->modelFavorite('games');
         //if id is set in GET method, display specific game, else display random
         if (isset($_GET['id'])) {
@@ -51,18 +49,18 @@ Class FrontendController extends Controller {
             if(isset($game['detail']) && $game['detail'] == "Not found.") {
                 echo $this->twig -> render('http404.twig');
             } else {
-                echo $this->twig -> render('game_poster.twig',['game' => $game, 'favGames' => $favGames]);
+                echo $this->twig -> render('game.twig',['game' => $game, 'favGames' => $favGames]);
             }
         } 
         else {
             $game = $this->games->getRandomGame();
-            echo $this->twig -> render('game_poster.twig',['game' => $game, 'favGames' => $favGames]);
+            echo $this->twig -> render('game.twig',['game' => $game, 'favGames' => $favGames]);
         }
 
     }
 
     //Controller for Movie Poster
-    public function movie_poster() {
+    public function movie() {
         $favMovies = $this->modelFavorite('movies');
         //if id is set in GET method, display specific movie, else display random
         if (isset($_GET['id'])) {
@@ -72,17 +70,17 @@ Class FrontendController extends Controller {
             if(isset($movie['success']) && $movie['success'] == false) {
                 echo $this->twig -> render('http404.twig');
             } else {
-                echo $this->twig -> render('movie_poster.twig',['movie' => $movie, 'favMovies' => $favMovies]);
+                echo $this->twig -> render('movie.twig',['movie' => $movie, 'favMovies' => $favMovies]);
             }
         } 
         else {
             $movie = $this->movies->getRandomMovie();
-            echo $this->twig -> render('movie_poster.twig',['movie' => $movie, 'favMovies' => $favMovies]);
+            echo $this->twig -> render('movie.twig',['movie' => $movie, 'favMovies' => $favMovies]);
         }
     }
 
     //Controller for Show Poster
-    public function show_poster() {
+    public function show() {
         $favShows = $this->modelFavorite('shows');
         //if id is set in GET method, display specific show, else display random
         if (isset($_GET['id'])) {
@@ -92,12 +90,12 @@ Class FrontendController extends Controller {
             if(isset($show['success']) && $show['success']== false) {
                 echo $this->twig -> render('http404.twig');
             } else {
-                echo $this->twig -> render('show_poster.twig',['show' => $show, 'favShows' => $favShows]);
+                echo $this->twig -> render('show.twig',['show' => $show, 'favShows' => $favShows]);
             }
         } 
         else {
             $show = $this->movies->getRandomShow();
-            echo $this->twig -> render('show_poster.twig',['show' => $show, 'favShows' => $favShows]);
+            echo $this->twig -> render('show.twig',['show' => $show, 'favShows' => $favShows]);
         }
     }
 
@@ -126,36 +124,42 @@ Class FrontendController extends Controller {
     public function register() {
         $errors = [];
         $account_created = false;
-        $account_exist = false;
-        //If every input if !empty
-        if(isset($_POST['create-account']) && !empty($_POST['username']) && !empty($_POST['password']) &&  !empty($_POST['email'])) {
-            //Username verification to prevent multiple account with same name account 
-            $users = $this->users->getUsers();
-            foreach($users as $user) {
-                //if username already in use, stop the foreach loop
-                if($user->username == $_POST['username']) {
-                    $account_exist = true;
-                    break;
-                }
-            }
-            //If the account username isn't taken, create the account
-            if ($account_exist == false) {
-                $this->users->createAccount(['username' => htmlspecialchars($_POST['username']), 'password' => crypt(htmlspecialchars($_POST['password']), 'messier87'), 'email' => htmlspecialchars($_POST['email'])]);
-                $account_created = true;
-            } 
-            //Error checks in the array $errors
-            else if ($account_exist == true) {
-                array_push($errors, "Username or Email already in use !");
-            }
-        }
+
+        //Checking every errrors
         if(isset($_POST['create-account']) && empty($_POST['username'])) {
             array_push($errors, "Please fill username !");
         }
         if(isset($_POST['create-account']) && empty($_POST['password'])) {
             array_push($errors, "Please fill password !");
+        } else {
+            if(isset($_POST['create-account']) && strlen($_POST['password'])< 8) {
+                array_push($errors, "Password is too short");
+            }
+            if(isset($_POST['create-account']) && !preg_match("#[0-9]+#", $_POST['password'])) {
+                array_push($errors, "Password must include at least one number");
+            }
+            if(isset($_POST['create-account']) && !preg_match("#[a-zA-Z]+#", $_POST['password'])) {
+                array_push($errors, "Password must include at least one letter");
+            }
         }
         if(isset($_POST['create-account']) && empty($_POST['email'])) {
             array_push($errors, "Please fill email !");
+        }
+        //Checking if account exist 
+        if(isset($_POST['create-account']) && !empty($_POST['username']) && !empty($_POST['password']) &&  !empty($_POST['email'])) {
+            $users = $this->users->getUsers();
+            foreach($users as $user) {
+                //if username already in use, stop the foreach loop
+                if($user['username'] == $_POST['username'] || $user['email'] == $_POST['email']) {
+                    array_push($errors, "Username or Email already in use !");
+                    break;
+                }
+            }
+        }
+        //If no errors, create account
+        if (empty($errors) && isset($_POST['create-account'])) {
+            $this->users->createAccount(['username' => htmlspecialchars($_POST['username']), 'password' => crypt(htmlspecialchars($_POST['password']), 'messier87'), 'email' => htmlspecialchars($_POST['email'])]);
+            $account_created = true;
         }
         echo $this->twig -> render('register.twig', ['errors' => $errors, 'account_created' => $account_created]); 
     }

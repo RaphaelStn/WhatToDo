@@ -1,0 +1,37 @@
+{% extends 'layout.twig' %}
+{% import 'favorite-form.twig' as form%}
+
+{% block title %}
+    {{game.name}}
+{% endblock %}
+
+
+{% block content %}
+
+<section id="info">
+    <h1> Here is a game to play !</h1>
+    <p>Don't like it? <a class="link" href="index.php?p=game">Try another one !</a></p>
+    <h2>{{game.name}}</h2>
+    <div class="poster-xl">
+        {{form.fav('games', game.id, favGames)}}
+        <div class="info">
+            <div>
+                <p>Game Rating : {{game.rating}}/5 <i class="fas fa-star"></i></p>
+                <p>Release date: {{game.released | date('d M Y')}}</p>
+            </div>
+            <img src="{{game.background_image}}"></img>
+            <div class="tags">
+                {% for tag in game.tags %} 
+                    {% if tag.language == 'eng' %}
+                        <p>{{tag.name}}</p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

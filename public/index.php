@@ -20,17 +20,17 @@ switch ($p) {
         $controller = new FrontendController();
         $controller->home();
         break;
-    case 'game_poster' :
+    case 'game' :
         $controller = new FrontendController();
-        $controller-> game_poster();
+        $controller-> game();
         break;
-    case 'movie_poster' :
+    case 'movie' :
         $controller = new FrontendController();
-        $controller-> movie_poster();
+        $controller-> movie();
         break;
-    case 'show_poster' :
+    case 'show' :
         $controller = new FrontendController();
-        $controller-> show_poster();
+        $controller-> show();
         break;
     case 'stream_poster' :
         $controller = new FrontendController();

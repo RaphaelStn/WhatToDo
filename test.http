@@ -1,4 +1,0 @@
-GET https://api.twitch.tv/helix/streams?sort=views&language=en&
-Authorization: Bearer qs1xl0ehjmi0h8xhyt5jvrvt47ryyf
-Client-Id: mzqtjchpz6918rvs2dkx3dat9tk48x
-

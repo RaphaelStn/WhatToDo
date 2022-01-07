@@ -1,8 +1,11 @@
 .container-poster {
     @include flexAlignCenter(row);
     @include posterWidth(4, 200px);
-    @include media-max(800px) {
-        @include posterWidth(3, 90px);
+    @include media-max(860px) {
+        @include posterWidth(3, 150px);
+    }
+    @include media-max(495px) {
+        @include posterWidth(2, 150px);
     }
     overflow: hidden;
     gap: 10px;
@@ -16,17 +19,18 @@
         width: 200px;
         height: 300px;
         object-fit: cover;
-        @include media-max(800px) {
-            width: 90px;
-            height: 150px;
+        @include media-max(860px) {
+            width: 150px;
+            height: 220px;
         }
     }
     p {
+        margin-left: 5px;
         text-align: center;
         overflow: hidden;
         height: 40px;
-        @include media-max(800px) {
-            width: 90px;
+        @include media-max(860px) {
+            width: 150px;
         }
     }
     &:hover {
@@ -63,6 +67,7 @@
 .heart {
     position: absolute;
     top: -30px;
+    right: 0px;
     width: 85px;
     height: 85px;
     background: url("https://cssanimation.rocks/images/posts/steps/heart.png") no-repeat;
@@ -81,9 +86,8 @@
 }
 .favorite {
     position: relative;
-    width: 0px;
     float: right;
-    right: 30px;
+    width: 0px;
     font-size: 30px;
     color : $main-color;
     input[type="checkbox"] {
@@ -93,4 +97,46 @@
         opacity: 0;
     }
 
+}
+
+//Poster game
+
+.container-game {
+    @include flexAlignCenter(row);
+    @include posterWidth(6, 160px);
+    @include media-max(1020px) {
+        @include posterWidth(4, 150px);
+    }
+    @include media-max(670px) {
+        @include posterWidth(2, 150px);
+    }
+    gap: 10px;
+    overflow: hidden;
+}
+.poster-game {
+    background-color: #161B22;
+    border-radius: 5px;
+    transition: background-color .3s;
+    transition: transform .5s;
+    img {
+        width: 160px;
+        height: 90px;
+        object-fit: cover;
+        @include media-max(800px) {
+            width: 150px;
+            height: 90px;
+        }
+    }
+    p {
+        margin-left: 5px;
+        text-align: center;
+        overflow: hidden;
+        height: 20px;
+        @include media-max(800px) {
+            width: 90px;
+        }
+    }
+    &:hover {
+        background-color: rgb(51, 50, 50); 
+    }
 }

@@ -1,6 +1,7 @@
 //Tippy is the tooltip library
-tippy('.favorite', {
+tippy('.heart', {
     content: 'Add to favorites',
+    placement: 'right',
 });
 
 //Logic for the heart function

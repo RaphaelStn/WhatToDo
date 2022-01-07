@@ -9,6 +9,7 @@
             font-size: 3rem;
         }
         p {
+            margin-left: 5px;
             @include posterWidth(4, 200px);
             @include media-max(800px) {
                 width: auto;
@@ -35,9 +36,21 @@
 #twitch {
     @include flexCenter(column);
     p {
-        @include posterWidth(3,250px);
-        @include media-max(800px) {
-            width: auto;
+        margin-left: 5px;
+    }
+}
+.twitch-videos {
+    @include flexCenter(row);
+    gap: 10px;
+    flex-wrap: wrap;
+    iframe {
+        aspect-ratio: 16 / 9;
+    }
+    @include media-max(640px) {
+        iframe {
+            width: 95%;
+            height: 95%;
+
         }
     }
 }

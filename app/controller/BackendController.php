@@ -18,7 +18,7 @@ class BackendController extends FrontendController {
         }
         //Get Username of the account
         $user = $this->users->getUser($_SESSION['user_id']);
-        $username = $user[0]->username;
+        $username = $user[0]['username'];
 
         //Get different Favorites
         $favShows = $this->getDataFavorites('shows');

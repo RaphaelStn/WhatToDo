@@ -6,23 +6,25 @@ Register
 
 
 {% block content %}
+<section id="login">
+    <form method="post" class="form">
+        <label for="username">Username</label>
+        <input name ="username" type="text" placeholder="Username">
+        <label for="password">Password</label>
+        <input name="password" type="password" placeholder="Password">
+        <label for="email">Your e-mail</label>
+        <input name="email" type="email" placeholder="Email">
+        <button name="create-account" type="submit">Create your account</button>
+    </form>
 
-<form method="post">
-    <label for="username">username</label>
-    <input name ="username" type="text">
-    <label for="password">password</label>
-    <input name="password" type="password">
-    <label for="email">Your e-mail</label>
-    <input name="email" type="email">
-    <button name="create-account" type="submit">Create an account</button>
-</form>
+    {% for error in errors %}
+    <p>{{error}}</p>
+    {% endfor %}
+    {% if account_created == true %}
+    <p>Your account is created,<a class="link" href="index.php?p=login">  please connect here</a></p>
+    {% endif %}
+</section>
 
-{% for error in errors %}
-<p>{{error}}</p>
-{% endfor %}
-{% if account_created == true %}
-<p>Your account is created, please connect <a href="index.php?p=login">here</a></p>
-{% endif %}
 {% endblock %}
 
 {% block scripts %}

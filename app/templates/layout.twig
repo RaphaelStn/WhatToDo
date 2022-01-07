@@ -20,9 +20,9 @@
         <label for="toggle">☰</label>
         <input type="checkbox" id="toggle">
         <a class="navbar-item" href="index.php?p=home">Home</a>
-        <a class="navbar-item" href="index.php?p=movie_poster">Movies</a>
-        <a class="navbar-item" href="index.php?p=show_poster">TV Shows</a>
-        <a class="navbar-item" href="index.php?p=game_poster">Games</a>
+        <a class="navbar-item" href="index.php?p=movie">Movies</a>
+        <a class="navbar-item" href="index.php?p=show">TV Shows</a>
+        <a class="navbar-item" href="index.php?p=game">Games</a>
         <a class="navbar-item navbar-login" href="index.php?p=login"> {% if session.auth == true %}Your account{% else %}Login {% endif %} </a>
     </nav>
 </header>
@@ -38,6 +38,7 @@
 <script src="scripts/Streams.js"></script>
 <script src="scripts/Slider.js"></script>
 <script src="scripts/index.js"></script>
+
 {% block scripts %}{% endblock %}
 
 </html> 
