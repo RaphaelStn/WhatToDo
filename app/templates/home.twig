@@ -20,7 +20,7 @@ Home
             <div class="poster">
                 {% if connection_status %}{{form.fav('movies', movie.id, favMovies)}}{% endif %}
                 <a href="index.php?p=movie&id={{movie.id}}" class="more">
-                     <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
+                     <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" alt="movie img">
                  </a>
                 <p>{{movie.title}}</p>
             </div>
@@ -33,7 +33,7 @@ Home
             <div class="poster">
                 {% if connection_status %}{{form.fav('shows', show.id, favShows)}}{% endif %}
                 <a href="index.php?p=show&id={{show.id}}" class="more">
-                    <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
+                    <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}" alt="show img">
                 </a>
                 <p>{{show.name}}</p>
             </div>
@@ -52,7 +52,7 @@ Home
             <div class="poster-game">
                 {% if connection_status %}{{form.fav('games', game.id, favGames)}}{% endif %}
                 <a href="index.php?p=game&id={{game.id}}" class="more">
-                    <img src="{{game.background_image}}"></img>
+                    <img src="{{game.background_image}}" alt="game img">
                 </a>
                 <p>{{game.name}}</p>
             </div>
@@ -61,6 +61,7 @@ Home
     <a href="index.php?p=game" class="btn-random">Pick me a movie</a>
 </section>
 <section id="twitch">
+    <h3><i class="fas fa-fire"></i> Top Twitch Channels online</h3>
     <p>Finally, you can just chill on <a target ="_blank" href="https://www.twitch.tv" class="link">Twitch <i class="fas fa-external-link-alt"></i> </a>. Here are the top streamers live right know</p>
     <div class="twitch-videos">
     </div>

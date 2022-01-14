@@ -19,7 +19,7 @@
                 <p>Game Rating : {{game.rating}}/5 <i class="fas fa-star"></i></p>
                 <p>Release date: {{game.released | date('d M Y')}}</p>
             </div>
-            <img src="{{game.background_image}}"></img>
+            <img src="{{game.background_image}}" alt="game img">
             <div class="tags">
                 {% for tag in game.tags %} 
                     {% if tag.language == 'eng' %}

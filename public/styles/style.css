@@ -607,6 +607,11 @@ a.btn-random:hover {
           justify-content: center;
 }
 
+#twitch h3 {
+  font-size: 1.5rem;
+  color: #CB3B3B;
+}
+
 #twitch p {
   margin-left: 5px;
 }
@@ -722,8 +727,7 @@ a.btn-random:hover {
   display: -ms-grid;
   display: grid;
   grid-gap: 10px;
-  -ms-grid-columns: (minmax(200px, 0fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 0fr));
 }
 
 @media screen and (max-width: 636px) {
@@ -731,8 +735,7 @@ a.btn-random:hover {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -ms-grid-columns: (minmax(100px, 0fr))[auto-fit];
-        grid-template-columns: repeat(auto-fit, minmax(100px, 0fr));
+        grid-template-columns: repeat(auto-fill, minmax(100px, 0fr));
   }
 }
 

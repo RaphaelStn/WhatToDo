@@ -20,10 +20,10 @@
 .container-grid {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat( auto-fit, minmax(200px, 0fr) );
+    grid-template-columns: repeat(auto-fill, minmax(200px, 0fr) );
     @include media-max(636px) {
         justify-content: center;
-        grid-template-columns: repeat( auto-fit, minmax(100px, 0fr) );
+        grid-template-columns: repeat(auto-fill, minmax(100px, 0fr) );
     }
 }
 .grid {
