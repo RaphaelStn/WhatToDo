@@ -38,11 +38,16 @@ $main-color: #CB3B3B;
 
 // General rules
 
-body {
+body, html {
   margin: 0;
   background-color: #0D1117;
   color: white;
   font-family: "Roboto", sans-serif;
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
@@ -55,7 +60,9 @@ h6 {
   font-family: 'Rajdhani', sans-serif;
 }
 section {
-  margin-top:50px;
+  flex-grow: 1;
+  margin: 20px;
+
 }
 
 .link {
@@ -68,5 +75,40 @@ section {
   @include flexAlignCenter(column);
   p {
     margin: 3px;
+  }
 }
+#e404 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+#admin {
+  margin: 20px;
+}
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: #161B22;
+}
+.tox-notification {
+  display: none !important;
+}
+button {
+  background-color: #0D1117;
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid $main-color;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  color: $main-color;
+  text-align:center;
+  transition: all 0.2s;
+  margin: 20px;
+  &:hover{
+      color:#fff;
+      background-color: $main-color;
+  }
 }

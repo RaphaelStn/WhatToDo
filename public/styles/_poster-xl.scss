@@ -1,6 +1,7 @@
 #info {
     @include flexAlignCenter(column);
     h1 {
+        text-align: center;
         color: $main-color;
         font-size: 3rem;
     }
@@ -11,10 +12,16 @@
     p, h2 {
         margin: 15px;
     }
+    @include media-max(860px) {
+        max-width: 100%;
+    }
   }
 .info {
     img {
-        width: 100%;
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
       }
 }
 .tags {
@@ -26,6 +33,9 @@
         border-radius: 5px;
         margin: 5px;
         padding: 10px;
+        @include media-max(860px) {
+            font-size: 12px;
+        }
     }
 }
 .overview {

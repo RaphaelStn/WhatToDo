@@ -2,6 +2,7 @@
 namespace Core\Controller;
 
 class Controller {
+    
 
     public function __construct() {
     }
@@ -34,7 +35,7 @@ class Controller {
             if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
                 \App::getInstance()->getTable('favorites')->add($_SESSION['user_id'] , $_POST[$name], $name);
             } else {
-                echo "<script>alert(\"Please connect\")</script>";
+                return $not_connect = 'not connected';
             }
         }
 
@@ -42,8 +43,6 @@ class Controller {
         if(isset($_POST['favorite']) && $_POST['favorite'] == 'unchecked' && !empty($_POST[$name])) {
             if(isset($_SESSION['user_id']) && $_SESSION['user_id'] !== null) {
                 \App::getInstance()->getTable('favorites')->delete($_SESSION['user_id'] ,$_POST[$name], $name);
-            } else {
-                echo 'please conenct';
             }
         }
 

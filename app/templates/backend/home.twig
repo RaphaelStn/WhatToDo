@@ -10,48 +10,52 @@
 
 <section id='account'>
     <h1> Welcome {{username}}</h1>
-    <p>You can manage your favorites here</p>
+    <p>You can manage your favorites here, click on the little heart to remove one from the favorites</p>
+    <div class="account-favorites">
+        {% if favMovies !=  null %}
+            <h2>Movies</h2>
+            <div class="container-grid">
+                {% for movie in favMovies %}
+                    <div class="grid">
+                        {{form.accountFav('movies', movie.id)}}
+                        <a href="index.php?p=movie&id={{movie.id}}" class="more">
+                            <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
+                        </a>
+                        <p>{{movie.title}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if favShows !=  null %}
+            <h2>TV Shows</h2>
+            <div class="container-grid">
+            {% for show in favShows %}    
+                <div class="grid">
+                    {{form.accountFav('shows', show.id)}}   
+                    <a href="index.php?p=show&id={{show.id}}" class="more">
+                        <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
+                    </a>
+                    <p>{{show.name}}</p>
+                </div>
+            {% endfor %}
+            </div>
+            {% endif %}
+            {% if favGames !=  null %} 
+            <h2>Games</h2>
+            <div class="container-grid">
+                {% for game in favGames %}
+                    <div class="grid">
+                        {{form.accountFav('games', game.id)}}
+                        <a href="index.php?p=game&id={{game.id}}" class="more">
+                            <img src="{{game.background_image}}"></img>
+                        </a>
+                        <p>{{game.name}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
     <form method="post" class="form"><button name="disconnect" type="submit" class="disconnect">Disconnect</button></form>
-
-
-    <h2>Movies</h2>
-    <div class="container-poster container-movie">
-        {% for movie in favMovies %}
-            <div class="poster">
-                {{form.accountFav('movies', movie.id)}}
-                <a href="index.php?p=movie&id={{movie.id}}" class="more">
-                     <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
-                 </a>
-                <p>{{movie.title}}</p>
-            </div>
-        {% endfor %}
-    </div>
-
-    <h2>TV Shows</h2>
-    <div class="container-poster container-show">
-    {% for show in favShows %}    
-        <div class="poster">
-            {{form.accountFav('shows', show.id)}}   
-            <a href="index.php?p=show&id={{show.id}}" class="more">
-                <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
-            </a>
-            <p>{{show.name}}</p>
-        </div>
-    {% endfor %}
-    </div>
-
-    <h2>Games</h2>
-    <div class="container-game">
-        {% for game in favGames %}
-            <div class="poster">
-                {{form.accountFav('games', game.id)}}
-                <a href="index.php?p=game&id={{game.id}}" class="more">
-                    <img src="{{game.background_image}}"></img>
-                </a>
-                <p>{{game.name}}</p>
-            </div>
-        {% endfor %}
-    </div>
 </section>
 {% endblock %}
 

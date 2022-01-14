@@ -31,6 +31,25 @@ class BackendController extends FrontendController {
 
     //Controller for Admin Page
     public function admin() {
-        echo $this->twig -> render('backend/admin.twig');
+        //Fetch posts for weekly recommandations 
+        $posts = $this->posts->getPosts('homepage');
+
+        if(isset($_POST['save'])) {
+            $this->posts->save('homepage', $_POST['content']);
+            header('location:index.php?p=admin');
+        }
+        //Admin account verification
+        if(isset($_SESSION['auth'])) {
+            $user = $this->users->getUser($_SESSION['user_id']);
+        
+            if (isset($user) && $username = $user[0]['isAdmin'] == '1') {
+                echo $this->twig -> render('backend/admin.twig',['posts' => $posts]);
+            } else {
+                echo $this->twig -> render('http404.twig');
+            }
+        }
+        else {
+            echo $this->twig -> render('http404.twig');
+        }
     }
 }

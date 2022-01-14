@@ -13,15 +13,15 @@
     <p>Don't like it? <a class="link" href="index.php?p=show">Try another one !</a></p>
     <h2>{{show.name}}</h2>
     <div class="poster-xl">
-        {{form.fav('shows', show.id, favShows)}}
+        {% if connection_status %}{{form.fav('shows', show.id, favShows)}}{% endif %}
         <div class="info">
             <div>
                 <p>Show Rating : {{show.vote_average}}/10 <i class="fas fa-star"></i></p>
                 <p>Release date: {{show.first_air_date | date('d M Y')}}</p>
             </div>
-            <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
             <p class="overview">Overview :</p>
             <p>{{show.overview}}</p>
+            <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
         </div>
     </div>
 </section>

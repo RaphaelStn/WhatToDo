@@ -25,13 +25,9 @@
         }
     }
     p {
-        margin-left: 5px;
         text-align: center;
         overflow: hidden;
         height: 40px;
-        @include media-max(860px) {
-            width: 150px;
-        }
     }
     &:hover {
         background-color: rgb(51, 50, 50); 
@@ -132,9 +128,6 @@
         text-align: center;
         overflow: hidden;
         height: 20px;
-        @include media-max(800px) {
-            width: 90px;
-        }
     }
     &:hover {
         background-color: rgb(51, 50, 50); 

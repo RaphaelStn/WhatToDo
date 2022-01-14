@@ -1,4 +1,6 @@
 #account {
+    display: flex;
+    flex-direction: column;
     h1 {
         text-align: center;
         color: $main-color;
@@ -9,10 +11,49 @@
     }
     h2 {
         font-size: 2rem; 
+        color: $main-color;
     }
 }
-.disconnect {
-    position: absolute;
-    top: 100px;
-    left: 15px;
+.account-favorites {
+    flex-grow: 1;
+}
+.container-grid {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat( auto-fit, minmax(200px, 0fr) );
+    @include media-max(636px) {
+        justify-content: center;
+        grid-template-columns: repeat( auto-fit, minmax(100px, 0fr) );
+    }
+}
+.grid {
+    background-color: #161B22;
+    width: 200px;
+    height: 230px;
+    p {
+        display: inline-block;
+        height: 30px;
+        width: 200px;
+        margin: 5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    img {
+        object-fit: cover;
+        width: 200px;
+        height: 200px;
+    }
+    @include media-max(636px) {
+        width: 100px;
+        height: 130px;
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        p {
+            width: 100px;
+            height: 30px;
+        }
+    }
 }

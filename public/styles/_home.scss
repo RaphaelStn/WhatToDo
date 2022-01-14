@@ -33,6 +33,28 @@
         color: $main-color;
     }
 }
+//Section recommandation 
+#recommandation {
+    @include flexCenter(column);
+    h3 {
+        font-size: 1.5rem;
+        color: $main-color;
+    }
+    p {
+        @include posterWidth(4, 200px);
+        @include media-max(800px) {
+            width: auto;
+        }
+        text-align: center;
+    }
+    a {
+        text-decoration: none;
+        font-family: 'Rajdhani', sans-serif;
+        color: $main-color;
+        font-weight: bolder;
+    }
+}
+//Section Twitch
 #twitch {
     @include flexCenter(column);
     p {

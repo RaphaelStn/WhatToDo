@@ -13,8 +13,8 @@ class Api {
         curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true );
         $this->data = curl_exec($this->curl);
-        if ($this->data === false) {
-            var_dump(curl_error($this->curl));
+        if ($this->data == false) {
+            var_dump(curl_error);
         } else {
             if($search == true) {
                 $this->data=json_decode($this->data, true);

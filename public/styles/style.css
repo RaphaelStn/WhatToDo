@@ -228,16 +228,9 @@ nav #toggle {
 }
 
 .poster p {
-  margin-left: 5px;
   text-align: center;
   overflow: hidden;
   height: 40px;
-}
-
-@media screen and (max-width: 860px) {
-  .poster p {
-    width: 150px;
-  }
 }
 
 .poster:hover {
@@ -377,12 +370,6 @@ nav #toggle {
   height: 20px;
 }
 
-@media screen and (max-width: 800px) {
-  .poster-game p {
-    width: 90px;
-  }
-}
-
 .poster-game:hover {
   background-color: #333232;
 }
@@ -401,6 +388,7 @@ nav #toggle {
 }
 
 #info h1 {
+  text-align: center;
   color: #CB3B3B;
   font-size: 3rem;
 }
@@ -414,8 +402,17 @@ nav #toggle {
   margin: 15px;
 }
 
+@media screen and (max-width: 860px) {
+  .poster-xl {
+    max-width: 100%;
+  }
+}
+
 .info img {
-  width: 100%;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .tags {
@@ -442,6 +439,12 @@ nav #toggle {
   border-radius: 5px;
   margin: 5px;
   padding: 10px;
+}
+
+@media screen and (max-width: 860px) {
+  .tags p {
+    font-size: 12px;
+  }
 }
 
 .overview {
@@ -549,6 +552,45 @@ a.btn-random:hover {
   color: #CB3B3B;
 }
 
+#recommandation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#recommandation h3 {
+  font-size: 1.5rem;
+  color: #CB3B3B;
+}
+
+#recommandation p {
+  width: calc(4 * (200px + 10px));
+  text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  #recommandation p {
+    width: auto;
+  }
+}
+
+#recommandation a {
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  color: #CB3B3B;
+  font-weight: bolder;
+}
+
 #twitch {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -629,7 +671,6 @@ a.btn-random:hover {
   display: inline-block;
   padding: 0.35em 1.2em;
   border: 0.1em solid #CB3B3B;
-  margin: 10px;
   border-radius: 0.12em;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -646,6 +687,16 @@ a.btn-random:hover {
   background-color: #CB3B3B;
 }
 
+#account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 #account h1 {
   text-align: center;
   color: #CB3B3B;
@@ -658,19 +709,87 @@ a.btn-random:hover {
 
 #account h2 {
   font-size: 2rem;
+  color: #CB3B3B;
 }
 
-.disconnect {
-  position: absolute;
-  top: 100px;
-  left: 15px;
+.account-favorites {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
-body {
+.container-grid {
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: (minmax(200px, 0fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
+}
+
+@media screen and (max-width: 636px) {
+  .container-grid {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -ms-grid-columns: (minmax(100px, 0fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(100px, 0fr));
+  }
+}
+
+.grid {
+  background-color: #161B22;
+  width: 200px;
+  height: 230px;
+}
+
+.grid p {
+  display: inline-block;
+  height: 30px;
+  width: 200px;
+  margin: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.grid img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 200px;
+  height: 200px;
+}
+
+@media screen and (max-width: 636px) {
+  .grid {
+    width: 100px;
+    height: 130px;
+  }
+  .grid img {
+    width: 100px;
+    height: 100px;
+  }
+  .grid p {
+    width: 100px;
+    height: 30px;
+  }
+}
+
+body, html {
   margin: 0;
   background-color: #0D1117;
   color: white;
   font-family: "Roboto", sans-serif;
+  height: 100%;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 h1,
@@ -684,7 +803,10 @@ h6 {
 }
 
 section {
-  margin-top: 50px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 20px;
 }
 
 .link {
@@ -709,5 +831,61 @@ section {
 
 #login p {
   margin: 3px;
+}
+
+#e404 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 50vh;
+}
+
+#admin {
+  margin: 20px;
+}
+
+footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #161B22;
+}
+
+.tox-notification {
+  display: none !important;
+}
+
+button {
+  background-color: #0D1117;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #CB3B3B;
+  border-radius: 0.12em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  color: #CB3B3B;
+  text-align: center;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  margin: 20px;
+}
+
+button:hover {
+  color: #fff;
+  background-color: #CB3B3B;
 }
 /*# sourceMappingURL=style.css.map */

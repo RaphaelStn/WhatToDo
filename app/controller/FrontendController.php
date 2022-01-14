@@ -11,10 +11,11 @@ Class FrontendController extends Controller {
         $this->loadModel('movies', 'api');
         $this->loadModel('games', 'api');
         $this->loadModel('users', 'table');
+        $this->loadModel('posts', 'table');
         //Twig Loader
         $this->twig = $this->loadTwig();
     }
-    
+
     //Controller for Home page
     public function home() {
         // Fetching trending movie via function defined in the models API (ie: moviesApi here)
@@ -22,10 +23,20 @@ Class FrontendController extends Controller {
         $shows = $this->movies->getTrendingShows();
         $games = $this->games->getTrendingGames();
 
+        //Fetch posts for weekly recommandations 
+        $posts = $this->posts->getPosts('homepage');
+
         //Loading differents models for Favorite logic (add, delete, display)
         $favShows = $this->modelFavorite('shows');
         $favMovies = $this->modelFavorite('movies');
         $favGames = $this->modelFavorite('games');
+
+        //Getting connection status
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
+            $connection_status = true;
+        } else {
+            $connection_status = false;
+        }
 
         // Rendering twig and sending datas to twig
         echo $this->twig -> render('home.twig',[
@@ -35,12 +46,23 @@ Class FrontendController extends Controller {
             'favShows' => $favShows,
             'favMovies' => $favMovies,
             'favGames' => $favGames,
+            'posts' => $posts,
+            'connection_status' => $connection_status
+
         ]);
     }
     
     //Controller for Game Poster
     public function game() {
         $favGames = $this->modelFavorite('games');
+
+        //Getting connection status
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
+            $connection_status = true;
+        } else {
+            $connection_status = false;
+        }
+
         //if id is set in GET method, display specific game, else display random
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -49,12 +71,12 @@ Class FrontendController extends Controller {
             if(isset($game['detail']) && $game['detail'] == "Not found.") {
                 echo $this->twig -> render('http404.twig');
             } else {
-                echo $this->twig -> render('game.twig',['game' => $game, 'favGames' => $favGames]);
+                echo $this->twig -> render('game.twig',['game' => $game, 'favGames' => $favGames, 'connection_status' => $connection_status]);
             }
         } 
         else {
             $game = $this->games->getRandomGame();
-            echo $this->twig -> render('game.twig',['game' => $game, 'favGames' => $favGames]);
+            echo $this->twig -> render('game.twig',['game' => $game, 'favGames' => $favGames, 'connection_status' => $connection_status]);
         }
 
     }
@@ -62,6 +84,14 @@ Class FrontendController extends Controller {
     //Controller for Movie Poster
     public function movie() {
         $favMovies = $this->modelFavorite('movies');
+
+        //Getting connection status
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
+            $connection_status = true;
+        } else {
+            $connection_status = false;
+        }
+
         //if id is set in GET method, display specific movie, else display random
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -70,18 +100,26 @@ Class FrontendController extends Controller {
             if(isset($movie['success']) && $movie['success'] == false) {
                 echo $this->twig -> render('http404.twig');
             } else {
-                echo $this->twig -> render('movie.twig',['movie' => $movie, 'favMovies' => $favMovies]);
+                echo $this->twig -> render('movie.twig',['movie' => $movie, 'favMovies' => $favMovies, 'connection_status' => $connection_status]);
             }
         } 
         else {
             $movie = $this->movies->getRandomMovie();
-            echo $this->twig -> render('movie.twig',['movie' => $movie, 'favMovies' => $favMovies]);
+            echo $this->twig -> render('movie.twig',['movie' => $movie, 'favMovies' => $favMovies, 'connection_status' => $connection_status]);
         }
     }
 
     //Controller for Show Poster
     public function show() {
         $favShows = $this->modelFavorite('shows');
+
+        //Getting connection status
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
+            $connection_status = true;
+        } else {
+            $connection_status = false;
+        }
+
         //if id is set in GET method, display specific show, else display random
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
@@ -90,28 +128,25 @@ Class FrontendController extends Controller {
             if(isset($show['success']) && $show['success']== false) {
                 echo $this->twig -> render('http404.twig');
             } else {
-                echo $this->twig -> render('show.twig',['show' => $show, 'favShows' => $favShows]);
+                echo $this->twig -> render('show.twig',['show' => $show, 'favShows' => $favShows, 'connection_status' => $connection_status]);
             }
         } 
         else {
             $show = $this->movies->getRandomShow();
-            echo $this->twig -> render('show.twig',['show' => $show, 'favShows' => $favShows]);
+            echo $this->twig -> render('show.twig',['show' => $show, 'favShows' => $favShows, 'connection_status' => $connection_status]);
         }
     }
 
     //Controller for Login page
     public function login() {
+
         $errors = false;
+
         //When POST, check if login() returns true, if true, connects, else return $errors
         if(!empty($_POST)){
             $auth = new DBAuth(\App::getInstance()->getdb());
             if($auth -> login($_POST['username'], $_POST['password'])) {
-                if($_SESSION['user_id'] == '1') {
-                    header('Location: index.php?p=admin'); 
-                } 
-                else {
                 header('Location: index.php?p=login');
-                }
             }
             else {
                 $errors = true;

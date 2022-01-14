@@ -16,6 +16,7 @@ Register
         <input name="email" type="email" placeholder="Email">
         <button name="create-account" type="submit">Create your account</button>
     </form>
+    <p>Password must be 8 character long and include at least one letter and one number</p>
 
     {% for error in errors %}
     <p>{{error}}</p>

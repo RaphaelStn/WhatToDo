@@ -10,13 +10,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdn.tiny.cloud/1/pa1f95o2vkvnul9irycx24w2i8h35vyjunuuukwvcl9gt7af/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <title>WhatToDo || {% block title %} {% endblock %}</title>
 </head>
 <body>
 <header>
     <nav>
         <a class="main-logo" href="index.php?p=home"><img src="img/logo.png"/></a>
-        <h1 class="title-responsive">What To Do</h1>
         <label for="toggle">☰</label>
         <input type="checkbox" id="toggle">
         <a class="navbar-item" href="index.php?p=home">Home</a>
@@ -29,11 +29,13 @@
 
 {% block content %} {% endblock %}
 <iframe style='display:none;'name="frame"></iframe>
+<footer>
+    <p>A website by <a class ="link" target="_blank" href="https://raphael-stacino.fr">Raphaël Stacino  <i class="fas fa-external-link-alt"></i></a></p>
+</footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://kit.fontawesome.com/db9607f191.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 <script src="scripts/Api.js"></script>
 <script src="scripts/Streams.js"></script>
 <script src="scripts/Slider.js"></script>

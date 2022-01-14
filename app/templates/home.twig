@@ -18,7 +18,7 @@ Home
     <div class="container-poster container-movie">
         {% for movie in movies %}
             <div class="poster">
-                {{form.fav('movies', movie.id, favMovies)}}
+                {% if connection_status %}{{form.fav('movies', movie.id, favMovies)}}{% endif %}
                 <a href="index.php?p=movie&id={{movie.id}}" class="more">
                      <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"></img>
                  </a>
@@ -31,7 +31,7 @@ Home
     <div class="container-poster container-show">
         {% for show in shows %}       
             <div class="poster">
-                {{form.fav('shows', show.id, favShows)}}
+                {% if connection_status %}{{form.fav('shows', show.id, favShows)}}{% endif %}
                 <a href="index.php?p=show&id={{show.id}}" class="more">
                     <img src="https://image.tmdb.org/t/p/w500/{{show.poster_path}}"></img>
                 </a>
@@ -41,12 +41,16 @@ Home
     </div>
     <a href="index.php?p=show" class="btn-random">Pick me a TV Show</a>
 </section>
+ <section id="recommandation">
+     <h3><i class="fas fa-fire"></i> Recommandation of the week</h3>
+    {% for post in posts %} {{post.content|raw}} {% endfor %}
+ </section>
 <section id = "game">
-    <h3>Top rated games of all time <i class="fas fa-chevron-down"></i></h3>
+    <h3><i class="fas fa-fire"></i> Top rated games of all time <i class="fas fa-chevron-down"></i></h3>
     <div class="container-game">
         {% for game in games %}
             <div class="poster-game">
-                {{form.fav('games', game.id, favGames)}}
+                {% if connection_status %}{{form.fav('games', game.id, favGames)}}{% endif %}
                 <a href="index.php?p=game&id={{game.id}}" class="more">
                     <img src="{{game.background_image}}"></img>
                 </a>
@@ -57,7 +61,7 @@ Home
     <a href="index.php?p=game" class="btn-random">Pick me a movie</a>
 </section>
 <section id="twitch">
-    <p>Finally, you can just chill on <a href="https://www.twitch.tv" class="link">Twitch <i class="fas fa-external-link-alt"></i> </a>. Here are the top streamers live right know</p>
+    <p>Finally, you can just chill on <a target ="_blank" href="https://www.twitch.tv" class="link">Twitch <i class="fas fa-external-link-alt"></i> </a>. Here are the top streamers live right know</p>
     <div class="twitch-videos">
     </div>
 </section>
