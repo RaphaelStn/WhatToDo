@@ -32,11 +32,7 @@ Class FrontendController extends Controller {
         $favGames = $this->modelFavorite('games');
 
         //Getting connection status
-        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
-            $connection_status = true;
-        } else {
-            $connection_status = false;
-        }
+        $connection_status = $this->isConnected();
 
         // Rendering twig and sending datas to twig
         echo $this->twig -> render('home.twig',[
@@ -57,11 +53,7 @@ Class FrontendController extends Controller {
         $favGames = $this->modelFavorite('games');
 
         //Getting connection status
-        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
-            $connection_status = true;
-        } else {
-            $connection_status = false;
-        }
+        $connection_status = $this->isConnected();
 
         //if id is set in GET method, display specific game, else display random
         if (isset($_GET['id'])) {
@@ -86,11 +78,7 @@ Class FrontendController extends Controller {
         $favMovies = $this->modelFavorite('movies');
 
         //Getting connection status
-        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
-            $connection_status = true;
-        } else {
-            $connection_status = false;
-        }
+        $connection_status = $this->isConnected();
 
         //if id is set in GET method, display specific movie, else display random
         if (isset($_GET['id'])) {
@@ -114,11 +102,7 @@ Class FrontendController extends Controller {
         $favShows = $this->modelFavorite('shows');
 
         //Getting connection status
-        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
-            $connection_status = true;
-        } else {
-            $connection_status = false;
-        }
+        $connection_status = $this->isConnected();
 
         //if id is set in GET method, display specific show, else display random
         if (isset($_GET['id'])) {
@@ -162,12 +146,12 @@ Class FrontendController extends Controller {
 
         //Checking every errrors
         if(isset($_POST['create-account']) && empty($_POST['username'])) {
-            array_push($errors, "Please fill username !");
+            array_push($errors, "Please fill username");
         }
         if(isset($_POST['create-account']) && empty($_POST['password'])) {
-            array_push($errors, "Please fill password !");
+            array_push($errors, "Please fill password");
         } else {
-            if(isset($_POST['create-account']) && strlen($_POST['password'])< 8) {
+            if(isset($_POST['create-account']) && strlen($_POST['password'])< 4) {
                 array_push($errors, "Password is too short");
             }
             if(isset($_POST['create-account']) && !preg_match("#[0-9]+#", $_POST['password'])) {
@@ -176,9 +160,12 @@ Class FrontendController extends Controller {
             if(isset($_POST['create-account']) && !preg_match("#[a-zA-Z]+#", $_POST['password'])) {
                 array_push($errors, "Password must include at least one letter");
             }
+            if(isset($_POST['create-account']) && $_POST['confirm-password'] !== $_POST['password']) {
+                array_push($errors, "Passwords are not corresponding");
+            }
         }
         if(isset($_POST['create-account']) && empty($_POST['email'])) {
-            array_push($errors, "Please fill email !");
+            array_push($errors, "Please fill email");
         }
         //Checking if account exist 
         if(isset($_POST['create-account']) && !empty($_POST['username']) && !empty($_POST['password']) &&  !empty($_POST['email'])) {

@@ -7,6 +7,7 @@ class UsersTable extends Table {
     public function getUsers() {
         return $this-> query("SELECT * FROM users");
     }
+    
     public function getUser($id) {
         return $this->query("SELECT * FROM users WHERE id=?", [$id], null, true);
     }

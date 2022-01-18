@@ -71,5 +71,13 @@ class Controller {
         }
         return $favs = $favorites;
     }
+
+    protected function isConnected() {
+        if(isset($_SESSION['auth']) && $_SESSION['auth'] == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 ?>

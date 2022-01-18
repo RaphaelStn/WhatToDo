@@ -1,12 +1,12 @@
 {% extends 'layout.twig' %}
 
 {% block title %}
-ADMIN
+Admin
 {% endblock %}
 
 {% block content %}
 <section id='admin'>
-    <p>You can edit here the content of the homepage post</p>
+    <p>You can edit here the content of the homepage post for recommandations of the week</p>
     <form method="post" class="admin-form">
         <textarea name='content'>
             {% for post in posts %} {{post.content}} {% endfor %}

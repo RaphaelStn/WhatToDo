@@ -12,17 +12,20 @@ Register
         <input name ="username" type="text" placeholder="Username" id="username">
         <label for="password">Password</label>
         <input name="password" type="password" placeholder="Password" id="password">
+        <label for="confirm-password">Confirm Password</label>
+        <input name="confirm-password" type="password" placeholder="Confirm password" id="confirm-password">
         <label for="email">Your e-mail</label>
         <input name="email" type="email" placeholder="Email" id="email">
         <button name="create-account" type="submit">Create your account</button>
     </form>
-    <p>Password must be 8 character long and include at least one letter and one number</p>
 
     {% for error in errors %}
     <p>{{error}}</p>
     {% endfor %}
     {% if account_created == true %}
-    <p>Your account is created,<a class="link" href="index.php?p=login">  please connect here</a></p>
+    <p>Your account is created,<a class="link" href="index.php?p=login"> please connect here</a></p>
+    {% else %}
+    <p>Password must be minimum 4 character long and include at least one letter and one number</p>
     {% endif %}
 </section>
 
